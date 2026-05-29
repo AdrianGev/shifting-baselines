@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shifting Baselines, Consumer Computing</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Bebas+Neue&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg-outer: #e8e0d0;
+      --bg-slide: #fdfaf4;
+      --bg-bar: #e8d5b7;
+      --border: #c8b89a;
+      --text: #1a1510;
+      --text2: #6b5d4f;
+      --text3: #a89880;
+      --accent: #c0392b;
+      --accent2: #e8735a;
+      --accent3: #f5e6d3;
+      --sage: #7ba05b;
+      --orange: #d4845a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg-outer);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .deck {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .progress-bar {
+      height: 3px;
+      background: var(--border);
+      margin-bottom: 12px;
+      border-radius: 2px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .slide {
+      background: var(--bg-slide);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      height: 600px;
+      padding: 0 48px 36px;
+      display: none;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 32px;
+      background: var(--bg-bar);
+      border-bottom: 2px solid var(--border);
+      border-radius: 6px 6px 0 0;
+    }
+
+    .window-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #febc2e; }
+    .dot.green { background: #28c840; }
+
+    .window-title {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      margin-left: 8px;
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 56px;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .slide-subtitle {
+      font-size: 18px;
+      color: var(--text2);
+      margin-bottom: 16px;
+    }
+
+    .slide-author {
+      font-size: 16px;
+      color: var(--text2);
+      margin-top: 32px;
+    }
+
+    .slide.divider {
+      background: var(--text);
+      justify-content: center;
+    }
+
+    .slide.divider .window-bar .dot {
+      opacity: 0.3;
+    }
+
+    .divider-num {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--accent2);
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .divider-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      color: #fdfaf4;
+      line-height: 0.9;
+      text-align: center;
+    }
+
+    .divider-sub {
+      font-size: 14px;
+      color: rgba(253, 250, 244, 0.5);
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .content-section {
+      margin-bottom: 24px;
+    }
+
+    .content-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .content-section p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .content-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content-section li {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .content-section li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .key-line {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+      padding: 16px;
+      background: var(--accent3);
+      border-left: 4px solid var(--accent);
+      margin-top: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text2);
+      background: var(--accent3);
+    }
+
+    td {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table-fill th, .table-fill td {
+      padding: 22px 12px;
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 400px;
+      margin-top: 16px;
+      position: relative;
+    }
+
+    .scale-toggle {
+      position: absolute;
+      top: -30px;
+      right: 10px;
+      padding: 6px 12px;
+      background: var(--bg-slide);
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .scale-toggle:hover {
+      background: var(--accent3);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .image-container {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-container img {
+      max-width: 48%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .image-with-caption {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 48%;
+      margin-top: -40px;
+    }
+
+    .image-with-caption img {
+      max-width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 4px;
+      border: 2px solid var(--border);
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-caption {
+      font-size: 13px;
+      color: var(--text2);
+      text-align: center;
+      font-style: italic;
+    }
+
+    .year-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: var(--bg-bar);
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      margin: 24px 0;
+    }
+
+    .year-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg-slide);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+
+    .year-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg-slide);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+
+    .year-display {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 96px;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .nav button {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      background: var(--bg-slide);
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav button:hover:not(:disabled) {
+      background: var(--accent3);
+      border-color: var(--accent);
+    }
+
+    .nav button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    #counter {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: var(--text2);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    body.presenting {
+      padding: 0;
+    }
+
+    body.presenting .deck {
+      max-width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body.presenting .nav {
+      display: none;
+    }
+
+    body.presenting .slide {
+      height: 100vh;
+      border-radius: 0;
+      border: none;
+      max-width: 100%;
+    }
+
+    body.presenting .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0;
+      z-index: 1000;
+    }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    .slide-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--text);
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    .two-col { display: flex; gap: 20px; width: 100%; flex: 1; }
+
+    .col-card {
+      flex: 1;
+      background: var(--accent3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .col-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text2);
+      margin-bottom: 12px;
+    }
+
+    .col-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .col-row:last-child { border-bottom: none; }
+
+    .col-era { font-size: 14px; color: var(--text2); }
+    .col-val { font-size: 16px; font-weight: 700; color: var(--text); }
+
+    .pct-badge {
+      background: var(--accent);
+      color: #fdfaf4;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-align: center;
+      margin: 16px 0;
+    }
+
+    .img-placeholder {
+      background: var(--bg-bar);
+      border: 2px dashed var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text3);
+      font-size: 12px;
+      font-style: italic;
+      height: 80px;
+      flex: 1;
+    }
+
+    .img-placeholder-row { display: flex; gap: 16px; width: 100%; }
+
+    .col-box { flex: 1; border-radius: 6px; padding: 20px; }
+
+    .col-box p { font-size: 15px; line-height: 1.6; color: var(--text); margin: 0; }
+
+    .col-box-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--text2);
+    }
+
+    .col-box-sage { background: #eef5e8; border-left: 4px solid var(--sage); }
+    .col-box-sage .col-box-label { color: var(--sage); }
+    .col-box-accent { background: var(--accent3); border-left: 4px solid var(--accent); }
+    .col-box-accent .col-box-label { color: var(--accent); }
+
+    .col-list { list-style: none; padding: 0; margin: 0; }
+
+    .col-list li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .col-list li:last-child { border-bottom: none; }
+    .col-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+
+    .stat-row { display: flex; gap: 16px; width: 100%; flex: 1; }
+
+    .stat-card {
+      flex: 1;
+      background: var(--accent3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stat-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-text { font-size: 14px; line-height: 1.6; color: var(--text); }
+
+    .three-cards { display: flex; gap: 16px; width: 100%; flex: 1; }
+
+    .info-card {
+      flex: 1;
+      background: var(--accent3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .info-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .info-card-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .info-card-body { font-size: 13px; line-height: 1.5; color: var(--text2); }
+
+    .pull-quote {
+      background: var(--accent3);
+      border-left: 4px solid var(--accent);
+      padding: 18px 24px;
+      margin: 0 0 16px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .pull-quote-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pull-quote-attr { font-size: 13px; color: var(--text2); }
+
+    .badge-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .badge {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: var(--accent3);
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      padding: 6px 14px;
+    }
+
+    .baseline-grid {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .bl-head {
+      background: var(--accent3);
+      padding: 10px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--accent);
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bl-label {
+      background: var(--bg-bar);
+      padding: 12px 16px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text2);
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    .bl-val {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .baseline-grid > *:nth-last-child(-n+3) { border-bottom: none; }
+
+    .two-stat-row { display: flex; gap: 24px; width: 100%; flex: 1; align-items: stretch; }
+    .three-stat-row { display: flex; gap: 16px; width: 100%; flex: 1; }
+
+    .big-stat {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--accent3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 28px 16px;
+    }
+
+    .big-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .big-stat-label { font-size: 13px; line-height: 1.5; color: var(--text2); max-width: 220px; }
+
+    .five-cards { display: flex; gap: 12px; width: 100%; flex: 1; }
+
+    .sol-card {
+      flex: 1;
+      background: var(--accent3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .sol-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .sol-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+    .works-cited-list { width: 100%; font-size: 13px; line-height: 1.8; color: var(--text); }
+    .wc-placeholder { color: var(--text3); font-style: italic; }
+
+    /* Slide 7 — hobbyists -> consumers */
+    .tx-layout {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+      flex: 1;
+    }
+
+    .tx-img-wrap {
+      flex: 0 0 30%;
+      height: 85%;
+      position: relative;
+    }
+
+    .tx-img-wrap img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      border: 2px solid var(--border);
+      transition: opacity 0.6s ease;
+    }
+
+    .tx-img2 { opacity: 0; }
+
+    .tx-center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .tx-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--text);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .tx-sub {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--text2);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .tx-s1, .tx-s2 { transition: opacity 0.6s ease; }
+
+    .tx-big .tx-s2 {
+      position: absolute;
+      opacity: 0;
+      color: #fdfaf4;
+    }
+
+    .tx-sub .tx-s2 {
+      position: absolute;
+      opacity: 0;
+      color: rgba(253, 250, 244, 0.6);
+    }
+
+    .transform-wave {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--text);
+      z-index: 20;
+      pointer-events: none;
+      transform: translateX(-105%);
+      border-radius: 6px;
+    }
+
+    #slide-transform.transformed { background: var(--text); }
+
+    #slide-transform.transformed .window-bar .dot { opacity: 0.3; }
+
+    #slide-transform.transformed .window-title {
+      color: rgba(253, 250, 244, 0.4);
+    }
+
+    #slide-transform.transformed 
+
+    #slide-transform.transformed 
+
+    #slide-transform.transformed .tx-img1 { opacity: 0; }
+
+    #slide-transform.transformed .tx-img2 {
+      opacity: 1;
+      border-color: rgba(253, 250, 244, 0.15);
+    }
+
+    #slide-transform.transformed .tx-big .tx-s1,
+    #slide-transform.transformed .tx-sub .tx-s1 { opacity: 0; }
+
+    #slide-transform.transformed .tx-big .tx-s2,
+    #slide-transform.transformed .tx-sub .tx-s2 { opacity: 1; }
+  </style>
+</head>
+<body>
+<div class="deck">
+<div class="progress-bar">
+<div class="progress-fill" id="prog" style="width: 16.67%"></div>
+</div>
+<div id="slides">
+<!-- Slide 1: Title -->
+<div class="slide active">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">shifting baselines — consumer computing</span>
+</div>
+<div class="slide-content">
+<h1 class="slide-title">What are the consequences of a computing industry that advances faster than the consumers it serves?</h1>
+<p class="slide-author">Adrian Gevorgyan</p>
+</div>
+</div>
+<!-- Slide 2: Image Comparison -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">then and now</span>
+</div>
+
+
+<div class="slide-content">
+<div class="image-container">
+<div class="image-with-caption">
+<img alt="Steve Jobs garage — Apple's first HQ" src="https://miro.medium.com/v2/resize:fit:1260/1*MT6qJa4TgZfXMOPa-CaBlw.jpeg"/>
+<div class="image-caption">Steve Jobs&apos; garage, Apple&apos;s first HQ &mdash; (<a href="https://medium.com/macoclock/i-visited-steve-jobs-garage-apple-s-first-hq-apple-park-here-s-what-i-learned-0a2899fb509f" target="_blank" style="color:var(--accent);">Medium &mdash; MacOClock</a>)</div>
+</div>
+<div class="image-with-caption">
+<img alt="New Apple CEO announcement 2026" src="https://cdn.geekwire.com/wp-content/uploads/2026/04/Apple-John-Ternus-Tim-Cook-1-1260x1008.jpg"/>
+<div class="image-caption">New Apple CEO announcement, 2026 &mdash; (<a href="https://www.geekwire.com/2026/former-advisor-to-steve-jobs-says-new-apple-ceo-is-exactly-whats-needed-an-engineer-from-the-inside/" target="_blank" style="color:var(--accent);">GeekWire</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 3: The Hobbyist Era -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">the hobbyist era — 1970s</span>
+</div>
+
+
+<div class="slide-content">
+<div class="content-section">
+<h3>The Hobbyist Era (1970s)</h3>
+<p>Computing started as a community project with no profit motive. The Homebrew Computer Club met in a garage in 1975. Members traded circuits, shared code, built their own machines.</p>
+<div class="image-container">
+<div class="image-with-caption">
+<img alt="Homebrew Computer Club" src="http://www.bambi.net/bob/bob.gif"/>
+<div class="image-caption">The Homebrew Computer Club &mdash; (<a href="http://www.bambi.net/bob/homebrew.html" target="_blank" style="color:var(--accent);">bambi.net</a>)</div>
+</div>
+<div class="image-with-caption">
+<img alt="Altair 8800" src="https://www.emustudio.net/documentation/user/assets/altair8800/altair8800.png"/>
+<div class="image-caption">Altair 8800, 1975, $395 ($2,000 today) &mdash; (<a href="https://www.emustudio.net/documentation/user/altair8800/" target="_blank" style="color:var(--accent);">emuStudio</a>)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 3: The Pivot -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">the pivot — 1980s</span>
+</div>
+
+
+<div class="slide-content">
+<div class="content-section">
+<h3>The Pivot (1980s)</h3>
+<div class="image-container">
+<div class="image-with-caption">
+<img alt="IBM PC 5150" src="https://ids.si.edu/ids/deliveryService?id=NMAH-AHB2016q152473&amp;max=600"/>
+<div class="image-caption">IBM PC 5150 &mdash; (<a href="https://americanhistory.si.edu/collections/object/nmah_1323282" target="_blank" style="color:var(--accent);">Smithsonian</a>)</div>
+<p style="font-size: 13px; margin-top: 8px; color: var(--text); text-align: center;"><strong>IBM PC 1981:</strong><br/>$1,565 &rarr; $5,540 today<br/>4.77 MHz</p>
+</div>
+<div class="image-with-caption">
+<img alt="Original 1984 Macintosh" src="https://images.computerhistory.org/timeline/timeline_computers_1984.applemacintosh.jpg"/>
+<div class="image-caption">Original 1984 Macintosh &mdash; (<a href="https://www.computerhistory.org/timeline/1984/" target="_blank" style="color:var(--accent);">Computer History Museum</a>)</div>
+<p style="font-size: 13px; margin-top: 8px; color: var(--text); text-align: center;"><strong>Mac 1984:</strong><br/>$2,495 &rarr; $6,543 today<br/>7.83 MHz</p>
+</div>
+</div>
+<p style="color: var(--accent); font-weight: 600; margin-top: -16px; text-align: center; font-size: 14px;">% change from 1970s: Cost +177% (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St.</a>) / Speed +139% (<a href="https://www.computerhope.com/history/processor.htm" target="_blank" style="color:var(--accent);">Computer Hope</a>)</p>
+</div>
+</div>
+</div>
+<!-- Slide 4: The Acceleration -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">the acceleration — decade by decade</span>
+</div>
+
+
+<div class="slide-content">
+<div class="content-section" style="margin-bottom: 0;">
+<h3>The Acceleration</h3>
+<table class="table-fill">
+<thead>
+<tr>
+<th>Decade</th>
+<th>Machine</th>
+<th>2026-adjusted price</th>
+<th>What it could do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1970s</td>
+<td>Altair 8800</td>
+<td>~$2,000 (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St.</a>)</td>
+<td>Toggle switches to input data, no display (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--accent);">CHM</a>)</td>
+</tr>
+<tr>
+<td>1980s</td>
+<td>IBM PC 5150</td>
+<td>~$5,540 (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St.</a>)</td>
+<td>Word processing, basic spreadsheets (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--accent);">CHM</a>)</td>
+</tr>
+<tr>
+<td>1990s</td>
+<td>Gateway 2000</td>
+<td>~$3,840 (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St.</a>)</td>
+<td>CD-ROM, early internet, basic multimedia (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--accent);">CHM</a>)</td>
+</tr>
+<tr>
+<td>2000s</td>
+<td>Gateway Performance 1500</td>
+<td>~$4,880 (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St.</a>)</td>
+<td>Broadband internet, video, multitasking (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--accent);">CHM</a>)</td>
+</tr>
+<tr>
+<td>2010s</td>
+<td>Average consumer PC</td>
+<td>~$600 (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St.</a>)</td>
+<td>HD video, gaming, cloud, always connected (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--accent);">CHM</a>)</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Average consumer laptop</td>
+<td>~$900 (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St.</a>)</td>
+<td>AI, 4K, instant everything (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--accent);">CHM</a>)</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top:10px;font-size:11px;color:var(--text3);line-height:1.8;">
+Inflation-adjusted prices: (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St. &mdash; Cost of a Computer Every Year Since 1970</a>) &nbsp;&middot;&nbsp;
+Machine specs &amp; capabilities: (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--accent);">Computer History Museum Timeline</a>) &nbsp;&middot;&nbsp;
+CPU speed history: (<a href="https://pcsite.medium.com/how-processor-speeds-have-increased-over-the-decades-2f889c212525" target="_blank" style="color:var(--accent);">Medium &mdash; PC Site</a>, <a href="https://ms.codes/en-ca/blogs/computer-hardware/cpu-clock-speed-history-graph" target="_blank" style="color:var(--accent);">MS Codes</a>, <a href="https://umatechnology.org/cpu-clock-speed-history-graph/" target="_blank" style="color:var(--accent);">UMA Technology</a>, <a href="https://www.computerhope.com/history/processor.htm" target="_blank" style="color:var(--accent);">Computer Hope</a>, <a href="https://hardwarehub.basalt.cc/blog/historical-overview-cpu-clock-speed-advancements-25" target="_blank" style="color:var(--accent);">Hardware Hub</a>)
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 5: The Growth Curve -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">the growth curve — transistor count</span>
+</div>
+
+
+<div class="slide-content">
+<div class="content-section">
+<h3>The Growth Curve</h3>
+<div class="chart-container" style="height: 400px;">
+<button class="scale-toggle" onclick="toggleScale()">Toggle Scale</button>
+<svg height="100%" id="transistor-chart" width="100%"></svg>
+</div>
+<div style="margin-top:10px;font-size:11px;color:var(--text3);line-height:1.8;">
+Data: (<a href="https://ourworldindata.org/grapher/transistors-per-microprocessor" target="_blank" style="color:var(--accent);">Our World in Data &mdash; Transistors per Microprocessor</a>) &nbsp;&middot;&nbsp;
+Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-price-trends-for-computers-tvs-and-related-items.htm" target="_blank" style="color:var(--accent);">US Bureau of Labor Statistics</a>)
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 7: Hobbyists -> Consumers -->
+<div class="slide" id="slide-transform">
+<div class="transform-wave" id="transform-wave"></div>
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">hobbyists → consumers</span>
+</div>
+
+
+<div class="slide-content">
+<div class="tx-layout">
+<div class="tx-img-wrap">
+<img alt="Homebrew Computer Club" class="tx-img1" src="http://www.bambi.net/bob/bob.gif"/>
+<img alt="IBM PC 5150" class="tx-img2" src="https://ids.si.edu/ids/deliveryService?id=NMAH-AHB2016q152473&max=600"/>
+</div>
+<div class="tx-center">
+<div class="tx-big">
+<span class="tx-s1">HOBBYISTS</span>
+<span class="tx-s2">CONSUMERS</span>
+</div>
+<div class="tx-sub">
+<span class="tx-s1">1975 &mdash; built to understand</span>
+<span class="tx-s2">1981 &mdash; built to sell</span>
+</div>
+</div>
+<div class="tx-img-wrap">
+<img alt="Altair 8800" class="tx-img1" src="https://www.emustudio.net/documentation/user/assets/altair8800/altair8800.png"/>
+<img alt="Macintosh 1984" class="tx-img2" src="https://images.computerhistory.org/timeline/timeline_computers_1984.applemacintosh.jpg"/>
+</div>
+</div>
+<div style="font-size:10px;color:var(--text3);text-align:center;margin-top:6px;" class="tx-s1">
+(<a href="http://www.bambi.net/bob/homebrew.html" target="_blank" style="color:var(--text3);">Homebrew Club &mdash; bambi.net</a>) &nbsp;&middot;&nbsp;
+(<a href="https://www.emustudio.net/documentation/user/altair8800/" target="_blank" style="color:var(--text3);">Altair 8800 &mdash; emuStudio</a>)
+</div>
+<div style="font-size:10px;color:rgba(253,250,244,0.4);text-align:center;margin-top:6px;" class="tx-s2">
+(<a href="http://www.floridahistorynetwork.com/aug-12-1981---developed-in-boca-raton-first-pc-released-by-ibm.html" target="_blank" style="color:rgba(253,250,244,0.4);">IBM PC &mdash; Florida History Network</a>) &nbsp;&middot;&nbsp;
+(<a href="https://www.computerhistory.org/timeline/1984/" target="_blank" style="color:rgba(253,250,244,0.4);">Mac 1984 &mdash; Computer History Museum</a>)
+</div>
+</div>
+</div>
+<!-- Slide 8: Divider, Who Moved the Baseline -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content">
+<div class="divider-num">ACT 2</div>
+<div class="divider-title">WHO MOVED<br/>THE BASELINE</div>
+<div class="divider-sub">Natural progress or manufactured demand?</div>
+</div>
+</div>
+<!-- Slide 9: Wirth's Law -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">wirth's law — software bloat</span>
+</div>
+<div class="slide-content" style="gap:14px;">
+<h3 class="slide-headline">Software grows faster than hardware improves</h3>
+<div class="pull-quote" style="margin:0;">
+  <div class="pull-quote-text">&ldquo;Software is getting slower more rapidly than hardware becomes faster.&rdquo;</div>
+  <div class="pull-quote-attr">&mdash; Niklaus Wirth, <em>A Plea for Lean Software</em>, 1995 (<a href="https://en.wikipedia.org/wiki/Wirth%27s_law" target="_blank" style="color:var(--accent);">Wikipedia &mdash; Wirth&apos;s Law</a>)</div>
+</div>
+<img src="assets/windows_size.png" style="width:100%;flex:1;border-radius:4px;object-fit:contain;min-height:0;">
+</div>
+</div>
+<!-- Slide 10: Planned Obsolescence Defined -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">planned obsolescence</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">Not all obsolescence is natural</h3>
+<div style="display:flex;gap:20px;flex:1;align-items:stretch;">
+  <div class="two-col" style="flex:1.2;">
+    <div class="col-box col-box-sage">
+      <div class="col-box-label">NATURAL</div>
+      <p>Technology improves, old hardware genuinely can&apos;t keep up. The gap between what software demands and what the device can do becomes real.</p>
+      
+    </div>
+    <div class="col-box col-box-accent">
+      <div class="col-box-label">ENGINEERED</div>
+      <p>Companies deliberately limit device lifespan through software updates, parts unavailability, or policy &mdash; to drive new purchases.</p>
+      
+    </div>
+  </div>
+  <div style="flex:0.85;display:flex;flex-direction:column;gap:8px;">
+    <div style="background:var(--bg-bar);border:2px dashed var(--border);border-radius:4px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.07em;color:var(--accent);text-transform:uppercase;">Add image here</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6;">Screenshot the device lifespan decline chart from Statista showing average smartphone replacement cycle shortening from ~33 months (2016) to ~28 months (2023).<br><br>URL: <a href="https://www.statista.com/statistics/619788/average-smartphone-life/" target="_blank" style="color:var(--accent);">statista.com/statistics/619788/average-smartphone-life/</a></div>
+      <div style="font-size:10px;color:var(--text3);font-family:monospace;">Save as: images/lifespan-decline.png</div>
+    </div>
+    <div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://www.statista.com/statistics/619788/average-smartphone-life/" target="_blank" style="color:var(--accent);">Statista</a>)</div>
+  </div>
+</div>
+</div>
+</div>
+<!-- Slide 11: Apple Battery Throttling -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">apple battery throttling — 2017</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline" style="font-size:46px;">Caught.</h3>
+<div class="stat-row" style="margin-bottom:14px;">
+<div class="stat-card">
+<div class="stat-year">2017</div>
+<div class="stat-text">Apple admitted slowing older iPhones via software update &mdash; without telling users. Lawsuit filed within days of disclosure.</div>
+</div>
+<div class="stat-card">
+<div class="stat-year">$500M</div>
+<div class="stat-text">Class action settlement reached in 2020. Apple denied wrongdoing, said it settled only to &ldquo;avoid burdensome litigation.&rdquo; (<a href="https://www.macrumors.com/2020/03/02/apple-agrees-to-up-to-500m-batterygate-settlement/" target="_blank" style="color:var(--accent);">MacRumors</a>)</div>
+</div>
+<div class="stat-card">
+<div class="stat-year">~$92</div>
+<div class="stat-text">Actual payout per affected user. iPhone 6, 6S, 7, SE owners &mdash; millions with working phones that had been secretly slowed. (<a href="https://www.macrumors.com/2024/01/06/apple-starts-iphone-batterygate-payouts/" target="_blank" style="color:var(--accent);">MacRumors</a>)</div>
+</div>
+</div>
+<div class="pull-quote" style="margin-bottom:10px;">
+<div class="pull-quote-text">&ldquo;We know that some of you feel Apple has let you down. We apologize. We have never &mdash; and would never &mdash; do anything to intentionally shorten the life of any Apple product, or degrade the user experience to drive customer upgrades.&rdquo;</div>
+<div class="pull-quote-attr">&mdash; Apple official statement, December 28, 2017 (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune</a>)</div>
+</div>
+<div class="pull-quote" style="margin:0;">
+<div class="pull-quote-text">&ldquo;Had Plaintiffs been informed by Apple that a simple battery replacement would have improved the performance of their iPhones, Plaintiffs would have chosen to replace their batteries &mdash; clearly a more cost-effective method rather than upgrading to a new iPhone.&rdquo;</div>
+<div class="pull-quote-attr">&mdash; Class action complaint, Eastern District of New York (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune</a>)</div>
+</div>
+</div>
+</div>
+<!-- Slide 12: Who Controls the Baseline -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">who controls the baseline</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">You don't decide when your device is obsolete. They do.</h3>
+<div class="three-cards">
+<div class="info-card">
+<div class="img-placeholder" style="height:60px;margin-bottom:12px;">Microsoft logo</div>
+<div class="info-card-title">Microsoft</div>
+<div class="info-card-body">Ending Windows 10 support October 2025 — hundreds of millions of PCs pushed toward hardware replacement</div>
+</div>
+<div class="info-card">
+<div class="img-placeholder" style="height:60px;margin-bottom:12px;">Apple logo</div>
+<div class="info-card-title">Apple</div>
+<div class="info-card-body">Drops iOS support after 5–6 years — cuts off security updates regardless of device condition</div>
+</div>
+<div class="info-card">
+<div class="img-placeholder" style="height:60px;margin-bottom:12px;">Google logo</div>
+<div class="info-card-title">Google</div>
+<div class="info-card-body">Android security updates end after 3 years — leaving millions of devices unpatched and effectively obsolete</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 13: Bridge -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content">
+<div class="divider-title" style="font-size:48px;line-height:1.2;">"So if companies are actively moving the baseline — why isn't anyone pushing back?"</div>
+</div>
+</div>
+<!-- Slide 14: Divider, Why Nobody Notices -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content">
+<div class="divider-num">ACT 3</div>
+<div class="divider-title">WHY NOBODY<br/>NOTICES</div>
+<div class="divider-sub">The mechanism that makes it all possible</div>
+</div>
+</div>
+<!-- Slide 15: Generational Amnesia -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">generational amnesia</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">Each generation accepts their reality as normal</h3>
+<div class="pull-quote">
+<div class="pull-quote-text">"Each generation takes the sea level it was born into as the baseline."</div>
+<div class="pull-quote-attr">— Daniel Pauly, shifting baselines theory</div>
+</div>
+<div class="badge-row">
+<div class="badge">NO REFERENCE POINT</div>
+<div class="badge">NO COMPARISON</div>
+<div class="badge">NO PUSHBACK</div>
+</div>
+</div>
+</div>
+<!-- Slide 16: Suzuki's Three Mechanisms -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">suzuki's three mechanisms</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">Why the baseline shifts without resistance</h3>
+<div class="pull-quote" style="margin-bottom:14px;">
+<div class="pull-quote-text">&ldquo;Shifting baseline syndrome is increasingly recognized as a significant barrier to implementing policies and actions that could address some of today&apos;s environmental challenges, because we misinterpret the scale and impact of change over time.&rdquo;</div>
+<div class="pull-quote-attr">&mdash; Suzuki Foundation (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
+</div>
+<div class="three-cards" style="flex:1;">
+<div class="info-card">
+<div class="info-card-num">01</div>
+<div class="info-card-title">No access to old data</div>
+<div class="info-card-body">&ldquo;Lack of awareness or difficulties in accessing historical environmental data.&rdquo; &mdash; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
+</div>
+<div class="info-card">
+<div class="info-card-num">02</div>
+<div class="info-card-title">No historical knowledge</div>
+<div class="info-card-body">&ldquo;Lack of familiarity and knowledge of natural history.&rdquo; &mdash; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
+</div>
+<div class="info-card">
+<div class="info-card-num">03</div>
+<div class="info-card-title">Not enough time</div>
+<div class="info-card-body">&ldquo;Declining interactions between people and the environment.&rdquo; &mdash; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 17: Interactive Baseline Slider -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">interactive baseline — drag the slider</span>
+</div>
+<div class="slide-content" style="justify-content:flex-start;padding-top:8px;">
+<div class="year-display" id="yearDisplay">1971</div>
+<div style="position:relative;margin:0 0 16px;">
+<input class="year-slider" id="yearSlider" max="2025" min="1971" type="range" value="1971"/>
+</div>
+<div class="baseline-grid" id="baselineGrid">
+<div></div>
+<div class="bl-head">1971</div>
+<div class="bl-head" id="currentYearLabel">1971</div>
+<div class="bl-label">Device lifespan</div>
+<div class="bl-val">10+ yrs</div>
+<div class="bl-val" id="lifespanVal">10+ yrs</div>
+<div class="bl-label">Storage</div>
+<div class="bl-val">none</div>
+<div class="bl-val" id="storageVal">none</div>
+<div class="bl-label">RAM</div>
+<div class="bl-val">256 bytes</div>
+<div class="bl-val" id="ramVal">256 bytes</div>
+<div class="bl-label">CPU speed</div>
+<div class="bl-val">1 MHz</div>
+<div class="bl-val" id="cpuVal">1 MHz</div>
+</div>
+</div>
+</div>
+<!-- Slide 18: Power Imbalance Cycle -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">the power imbalance cycle</span>
+</div>
+<div class="slide-content" style="padding-top:6px;">
+<h3 class="slide-headline" style="margin-bottom:12px;">The loop that sustains it</h3>
+<div style="display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:1fr auto 1fr;gap:0;flex:1;align-items:center;">
+<div style="background:var(--accent3);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);line-height:1;">01</div>
+<div style="font-size:13px;font-weight:700;color:var(--text);">Industry sets the baseline</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.5;">&ldquo;Software expands to fill the available memory.&rdquo; &mdash; Wirth (<a href="https://deviq.com/laws/wirths-law/" target="_blank" style="color:var(--accent);">DevIQ</a>)</div>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 8px;">
+<svg width="48" height="24" viewBox="0 0 48 24"><path d="M4 12 H40 M32 4 L40 12 L32 20" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div style="background:var(--accent3);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);line-height:1;">02</div>
+<div style="font-size:13px;font-weight:700;color:var(--text);">Consumers accept it</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.5;">&ldquo;Studies have shown that older generations more readily recall accurate past conditions.&rdquo; (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">Suzuki</a>)</div>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:8px 0;">
+<svg width="24" height="48" viewBox="0 0 24 48"><path d="M12 4 V40 M4 32 L12 40 L20 32" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div style="text-align:center;padding:8px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--text3);letter-spacing:0.05em;">REPEATS</div>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:8px 0;">
+<svg width="24" height="48" viewBox="0 0 24 48"><path d="M12 4 V40 M4 32 L12 40 L20 32" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div style="background:var(--accent3);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);line-height:1;">04</div>
+<div style="font-size:13px;font-weight:700;color:var(--text);">Baseline moves again</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.5;">&ldquo;Software is getting slower more rapidly than hardware becomes faster.&rdquo; (<a href="https://deviq.com/laws/wirths-law/" target="_blank" style="color:var(--accent);">Wirth &mdash; DevIQ</a>)</div>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 8px;">
+<svg width="48" height="24" viewBox="0 0 48 24"><path d="M44 12 H8 M16 4 L8 12 L16 20" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div style="background:var(--accent3);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);line-height:1;">03</div>
+<div style="font-size:13px;font-weight:700;color:var(--text);">Industry profits</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.5;">Apple&apos;s $500M Batterygate settlement: consumers didn&apos;t know a $29 battery replacement was all they needed. (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune, 2017</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 19: Divider, The Consequences -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content">
+<div class="divider-num">ACT 4</div>
+<div class="divider-title">THE<br/>CONSEQUENCES</div>
+<div class="divider-sub">Economic. Environmental. Political. Social.</div>
+</div>
+</div>
+<!-- Slide 20: For vs Against -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">the debate</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">The debate</h3>
+<div class="two-col">
+<div class="col-box col-box-sage">
+<div class="col-box-label">The case for rapid advancement</div>
+<ul class="col-list">
+<li>You get more for your money than ever. A $400 laptop today does what a $3,000 machine from 2000 couldn&apos;t. (<a href="https://www.hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/" target="_blank" style="color:var(--sage);">Morrow</a>)</li>
+<li>Devices now last longer on a charge &mdash; power efficiency improved dramatically alongside speed.</li>
+<li>Computing was genuinely democratized. Things that required expensive specialists are now free and instant.</li>
+</ul>
+</div>
+<div class="col-box col-box-accent">
+<div class="col-box-label">The case against rapid advancement</div>
+<ul class="col-list">
+<li>The era of automatic improvement is ending &mdash; but upgrade pressure isn&apos;t. &ldquo;The golden age of more rapidly cheapening transistors did not survive unchallenged past the new millennium.&rdquo; (<a href="https://www.nber.org/system/files/working_papers/w24553/w24553.pdf" target="_blank" style="color:var(--accent);">Flamm, NBER</a>)</li>
+<li>Software intentionally absorbs every hardware gain. Your new device feels as slow as your old one within two years. (<a href="https://deviq.com/laws/wirths-law/" target="_blank" style="color:var(--accent);">Wirth&apos;s Law &mdash; DevIQ</a>)</li>
+<li>Consumers have no baseline to push back from. They accept whatever the industry says they need. (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">Suzuki</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 21: Economic -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 01 — economic</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">Consequence 01 &mdash; Economic</h3>
+<div style="display:flex;gap:20px;flex:1;align-items:stretch;">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;">
+<div class="big-stat">
+<div class="big-stat-num">3&ndash;4 yrs</div>
+<div class="big-stat-label">Average device lifespan today &mdash; down from 7&ndash;10 years in 1993 (<a href="https://www.ifixit.com/News/58877/electronics-lifespan" target="_blank" style="color:var(--accent);">iFixit</a>)</div>
+</div>
+<div class="big-stat">
+<div class="big-stat-num">$1,200+</div>
+<div class="big-stat-label">Spent per year by US consumers on consumer electronics (<a href="https://www.statista.com/statistics/276027/us-consumer-electronics-spending/" target="_blank" style="color:var(--accent);">Statista</a>)</div>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+<div style="background:var(--bg-bar);border:2px dashed var(--border);border-radius:4px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;">
+<div style="font-size:11px;font-weight:700;letter-spacing:0.07em;color:var(--accent);text-transform:uppercase;">Add image here</div>
+<div style="font-size:12px;color:var(--text2);line-height:1.6;">Screenshot the US consumer electronics spending over time bar chart from Statista, showing annual spending growth from the 2000s to today.<br><br>URL: <a href="https://www.statista.com/statistics/276027/us-consumer-electronics-spending/" target="_blank" style="color:var(--accent);">statista.com/statistics/276027/us-consumer-electronics-spending/</a></div>
+<div style="font-size:10px;color:var(--text3);font-family:'Courier New',monospace;">Save as: images/consumer-spending.png</div>
+</div>
+<div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://www.statista.com/statistics/276027/us-consumer-electronics-spending/" target="_blank" style="color:var(--accent);">Statista</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 22: Price Paradox -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">price paradox — nominal vs adjusted</span>
+</div>
+<div class="slide-content" style="gap:10px;">
+<h3 class="slide-headline" style="margin-bottom:4px;">But isn&apos;t it getting cheaper?</h3>
+<div class="chart-container" style="height:260px;margin-top:0;flex-shrink:0;">
+<svg height="100%" id="price-chart" width="100%"></svg>
+</div>
+<div style="font-size:12px;color:var(--text2);line-height:1.5;padding:8px 12px;background:var(--accent3);border-left:3px solid var(--accent);border-radius:0 4px 4px 0;">&ldquo;Today&apos;s mid-range GPUs equate to high-end GPUs from previous eras, providing similar or superior performance at a more accessible price point. A $299 card from 1998 costs $566 adjusted today.&rdquo; (<a href="https://www.hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/" target="_blank" style="color:var(--accent);">Morrow</a>)</div>
+</div>
+</div>
+<!-- Slide 23: Environmental -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 02 — environmental</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">Consequence 02 — Environmental</h3>
+<div class="three-stat-row">
+<div class="big-stat">
+<div class="big-stat-num">6.9M</div>
+<div class="big-stat-label">Tons of US e-waste generated per year</div>
+</div>
+<div class="big-stat">
+<div class="big-stat-num">17%</div>
+<div class="big-stat-label">Of global e-waste formally recycled</div>
+</div>
+<div class="big-stat">
+<div class="big-stat-num">0</div>
+<div class="big-stat-label">Federal e-waste recycling laws in the US</div>
+</div>
+</div>
+<div class="img-placeholder" style="margin-top:16px;height:120px;">e-waste pile image</div>
+</div>
+</div>
+<!-- Slide 24: Political -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 03 — political</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">Consequence 03 — Political</h3>
+<div class="three-cards">
+<div class="info-card">
+<div class="img-placeholder" style="height:50px;margin-bottom:10px;">EU flag</div>
+<div class="info-card-title">EU Right to Repair</div>
+<div class="info-card-body">March 2024 — spare parts and repair manuals required for 10 years after sale</div>
+</div>
+<div class="info-card">
+<div class="img-placeholder" style="height:50px;margin-bottom:10px;">France flag</div>
+<div class="info-card-title">France</div>
+<div class="info-card-body">Repairability score mandatory on all electronics since 2021 — first in the world</div>
+</div>
+<div class="info-card">
+<div class="img-placeholder" style="height:50px;margin-bottom:10px;">FTC logo</div>
+<div class="info-card-title">US FTC</div>
+<div class="info-card-body">2021 right to repair report called manufacturer restrictions anticompetitive</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 25: Social Part 1 -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 04 — social: the gap</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">Consequence 04 &mdash; Social: The Gap</h3>
+<div style="display:flex;gap:20px;flex:1;align-items:stretch;">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;">
+<div class="big-stat">
+<div class="big-stat-num">92% vs 76%</div>
+<div class="big-stat-label">High vs low income students with laptops at home (<a href="https://www.commonsensemedia.org/sites/default/files/research/report/2020_report_the-common-sense-census-inside-the-21st-century-classroom.pdf" target="_blank" style="color:var(--accent);">Common Sense Media</a>)</div>
+</div>
+<div class="big-stat">
+<div class="big-stat-num">1 in 3</div>
+<div class="big-stat-label">Black, Latino, and Native American households with no computing device (<a href="https://www.census.gov/library/stories/2021/08/improving-access-to-digital-technology.html" target="_blank" style="color:var(--accent);">US Census</a>)</div>
+</div>
+<div class="big-stat">
+<div class="big-stat-num">54% vs 87%</div>
+<div class="big-stat-label">Low vs upper income Americans with broadband access (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</div>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+<div style="background:var(--bg-bar);border:2px dashed var(--border);border-radius:4px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;">
+<div style="font-size:11px;font-weight:700;letter-spacing:0.07em;color:var(--accent);text-transform:uppercase;">Add image here</div>
+<div style="font-size:12px;color:var(--text2);line-height:1.6;">Screenshot the income vs. broadband access bar chart from the Pew Research 2021 Mobile Technology report &mdash; the chart showing percentage with home broadband by income tier.<br><br>URL: <a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/</a></div>
+<div style="font-size:10px;color:var(--text3);font-family:'Courier New',monospace;">Save as: images/pew-digital-divide.png</div>
+</div>
+<div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 26: Social Part 2 -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 04 — social: the invisible cost</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">Consequence 04 &mdash; Social: The Invisible Cost</h3>
+<div class="three-cards" style="flex:1;">
+<div class="info-card">
+<div class="info-card-num">01</div>
+<div class="info-card-title">Affordable Connectivity Program</div>
+<div class="info-card-body">Ended June 2024 &mdash; 81% of parents worried their children would fall behind without it. 23 million households lost subsidized internet access overnight. (<a href="https://www.fcc.gov/affordable-connectivity-program" target="_blank" style="color:var(--accent);">FCC</a>)</div>
+</div>
+<div class="info-card">
+<div class="info-card-num">02</div>
+<div class="info-card-title">Manufactured Obsolescence</div>
+<div class="info-card-body">A device supported in 2020 may be unsupported today &mdash; not because it broke, but because the baseline moved.</div>
+</div>
+<div class="info-card">
+<div class="info-card-num">03</div>
+<div class="info-card-title">Mobile Can&apos;t Replace Computing</div>
+<div class="info-card-body">Mobile alone can&apos;t handle homework, job applications, or standardized testing. A phone is not a computer &mdash; but for 1 in 3 low-income households, it&apos;s all there is. (<a href="https://www.pewresearch.org/internet/2024/01/31/for-lower-income-americans-mobile-phones-and-social-media-are-the-primary-pathway-to-digital-participation/" target="_blank" style="color:var(--accent);">Pew Research, 2024</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 27: The Core Consequence -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content" style="gap:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 48px;">
+<div style="font-family:'DM Serif Display',serif;font-size:22px;line-height:1.5;color:#fdfaf4;max-width:680px;">&ldquo;Consumers permanently lost the ability to evaluate whether any of this was necessary.&rdquo;</div>
+<div style="font-family:'DM Serif Display',serif;font-size:22px;line-height:1.5;color:rgba(253,250,244,0.7);max-width:680px;">&ldquo;The industry controls what you think you need.&rdquo;</div>
+<div style="font-family:'DM Serif Display',serif;font-size:17px;line-height:1.55;color:rgba(253,250,244,0.5);max-width:640px;border-top:1px solid rgba(253,250,244,0.15);padding-top:18px;">&ldquo;When society gets used to a degraded environment as the baseline, further degradation will not be seen as something to be concerned about.&rdquo; &mdash; <a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:rgba(253,250,244,0.5);">Suzuki Foundation</a></div>
+<div style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.05em;color:var(--accent2);">And you don&apos;t know it.</div>
+<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:4px;">
+<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="font-size:11px;color:rgba(253,250,244,0.4);text-decoration:none;font-family:'Courier New',monospace;">davidsuzuki.org &nearr;</a>
+<a href="https://www.nber.org/system/files/working_papers/w24553/w24553.pdf" target="_blank" style="font-size:11px;color:rgba(253,250,244,0.4);text-decoration:none;font-family:'Courier New',monospace;">Flamm &mdash; NBER &nearr;</a>
+<a href="https://www.hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/" target="_blank" style="font-size:11px;color:rgba(253,250,244,0.4);text-decoration:none;font-family:'Courier New',monospace;">Morrow &mdash; HDT &nearr;</a>
+</div>
+</div>
+</div>
+<!-- Slide 28: Divider, Where Does This Leave Us -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content">
+<div class="divider-num">ACT 5</div>
+<div class="divider-title">WHERE DOES<br/>THIS LEAVE US</div>
+</div>
+</div>
+<!-- Slide 29: Reflecting on the Argument -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">reflecting on the argument</span>
+</div>
+<div class="slide-content" style="gap:14px;">
+<div style="display:flex;gap:20px;align-items:stretch;">
+<div class="col-box" style="background:var(--accent3);border-left:4px solid var(--accent);flex:1;">
+<div class="col-box-label">Original Argument</div>
+<p style="font-size:15px;line-height:1.7;color:var(--text);">What are the consequences of a computing industry that advances faster than the consumers it serves?</p>
+</div>
+<div class="col-box" style="background:var(--bg-bar);border-left:4px solid var(--text2);flex:1;">
+<div class="col-box-label">Finding</div>
+<p style="font-size:14px;line-height:1.7;color:var(--text);">Consumers got genuine value <em>and</em> lost their ability to evaluate the industry simultaneously. The baseline shifted so far that the question of whether it was good or bad is almost impossible to answer from inside it.</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;justify-content:center;">
+<div style="font-size:11px;font-weight:700;letter-spacing:0.07em;color:var(--accent);text-transform:uppercase;">Add image here</div>
+<div style="background:var(--bg-bar);border:2px dashed var(--border);border-radius:4px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;">
+<div style="font-size:12px;color:var(--text2);line-height:1.6;">Screenshot the transistors-per-microprocessor chart from Our World in Data &mdash; the exponential curve from 1971 to today showing the baseline rising continuously for 50 years. This visually proves the argument: the baseline kept rising every decade and nobody living inside it noticed.<br><br>URL: <a href="https://ourworldindata.org/grapher/transistors-per-microprocessor" target="_blank" style="color:var(--accent);">ourworldindata.org/grapher/transistors-per-microprocessor</a></div>
+<div style="font-size:10px;color:var(--text3);font-family:'Courier New',monospace;">Save as: images/transistors-owid.png</div>
+</div>
+<div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://ourworldindata.org/grapher/transistors-per-microprocessor" target="_blank" style="color:var(--accent);">Our World in Data</a>)</div>
+</div>
+</div>
+</div>
+<!-- Slide 30: Solutions -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">solutions</span>
+</div>
+<div class="slide-content">
+<h3 class="slide-headline">What would change the equation</h3>
+<div class="five-cards" style="flex:1;">
+<div class="sol-card">
+<div class="sol-num">01</div>
+<div class="sol-title">Hardware Longevity Standards</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Mandatory minimum support periods. EU requires 10 years of spare parts. (<a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_21_5642" target="_blank" style="color:var(--accent);">EU Right to Repair Directive</a>)</div>
+</div>
+<div class="sol-card">
+<div class="sol-num">02</div>
+<div class="sol-title">Tech Literacy in Schools</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Teaching hardware history gives students the reference point that generational amnesia denies them. (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">Suzuki</a>)</div>
+</div>
+<div class="sol-card">
+<div class="sol-num">03</div>
+<div class="sol-title">Right to Repair</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">FTC called manufacturer restrictions anticompetitive in 2021. Repair access disrupts the upgrade treadmill. (<a href="https://www.ftc.gov/reports/nixing-the-fix" target="_blank" style="color:var(--accent);">FTC &mdash; Nixing the Fix</a>)</div>
+</div>
+<div class="sol-card">
+<div class="sol-num">04</div>
+<div class="sol-title">Software Transparency</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Require software to disclose actual vs. recommended specs. Make Wirth&apos;s Law visible so consumers can push back.</div>
+</div>
+<div class="sol-card">
+<div class="sol-num">05</div>
+<div class="sol-title">Digital Equity Programs</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Long-term funding for access programs. Ending the ACP cut off 23M households in June 2024. (<a href="https://www.fcc.gov/affordable-connectivity-program" target="_blank" style="color:var(--accent);">FCC</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 31: Conclusion -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content" style="gap:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 48px;">
+<div style="font-family:'DM Serif Display',serif;font-size:20px;line-height:1.6;color:#fdfaf4;max-width:700px;">The computing industry advanced faster than consumers for fifty years.</div>
+<div style="font-family:'DM Serif Display',serif;font-size:20px;line-height:1.6;color:rgba(253,250,244,0.75);max-width:700px;">Each acceleration permanently reset what users consider normal — and erased their ability to question it.</div>
+<div style="font-family:'DM Serif Display',serif;font-size:20px;line-height:1.6;color:rgba(253,250,244,0.55);max-width:700px;">The most important consequence isn't the e-waste or the cost. It's that the industry now controls what you think you need.</div>
+</div>
+</div>
+<!-- Slide 32: Works Cited -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">works cited</span>
+</div>
+<div class="slide-content" style="justify-content:flex-start;overflow-y:auto;">
+<div class="works-cited-list" id="works-cited">
+<p class="wc-placeholder">MLA citations to be added.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="nav">
+<button id="prev" onclick="go(-1)">prev</button>
+<span id="counter">1 / 7</span>
+<button id="next" onclick="go(1)">next</button>
+</div>
+</div>
+<script>
+    let cur = 0;
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+
+    function go(dir) {
+      const prevIndex = cur;
+      slides[cur].classList.remove('active');
+      cur = Math.max(0, Math.min(total - 1, cur + dir));
+      slides[cur].classList.add('active');
+      document.getElementById('counter').textContent = (cur + 1) + ' / ' + total;
+      document.getElementById('prev').disabled = cur === 0;
+      document.getElementById('next').disabled = cur === total - 1;
+      document.getElementById('prog').style.width = ((cur + 1) / total * 100) + '%';
+
+      if (cur === 5) setTimeout(renderTransistorChart, 50);
+      if (cur === 16) { const s = document.getElementById('yearSlider'); if (s) { s.value = '1971'; updateSlider(); } }
+      if (cur === 21) setTimeout(renderPriceChart, 50);
+
+      if (prevIndex === 6 && cur !== 6) {
+        resetTransform();
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'Escape') exitPresent();
+      if (e.key === ' ' && cur === 6) {
+        e.preventDefault();
+        triggerTransform();
+      }
+    });
+
+    function togglePresent() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        document.body.classList.add('presenting');
+        setTimeout(renderTransistorChart, 100);
+      } else {
+        exitPresent();
+      }
+    }
+
+    function exitPresent() {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
+      document.body.classList.remove('presenting');
+      setTimeout(renderTransistorChart, 100);
+    }
+
+    function triggerTransform() {
+      const slide = document.getElementById('slide-transform');
+      if (slide.dataset.transformed) return;
+      slide.dataset.transformed = '1';
+
+      const wave = document.getElementById('transform-wave');
+      wave.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.6, 1)';
+      wave.style.transform = 'translateX(0)';
+
+      setTimeout(() => {
+        slide.classList.add('transformed');
+        wave.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.6, 1)';
+        wave.style.transform = 'translateX(105%)';
+      }, 500);
+    }
+
+    function resetTransform() {
+      const slide = document.getElementById('slide-transform');
+      slide.classList.remove('transformed');
+      delete slide.dataset.transformed;
+      const wave = document.getElementById('transform-wave');
+      wave.style.transition = 'none';
+      wave.style.transform = 'translateX(-105%)';
+    }
+
+    go(0);
+
+    const transistorData = [
+      { year: 1971, transistors: 2308.2417 },
+      { year: 1972, transistors: 3554.5222 },
+      { year: 1974, transistors: 6097.5625 },
+      { year: 1979, transistors: 29163.777 },
+      { year: 1982, transistors: 135772.72 },
+      { year: 1985, transistors: 273841.94 },
+      { year: 1986, transistors: 273841.94 },
+      { year: 1988, transistors: 273841.94 },
+      { year: 1989, transistors: 1207900.8 },
+      { year: 1990, transistors: 1207900.8 },
+      { year: 1992, transistors: 3105900.2 },
+      { year: 1993, transistors: 3105900.2 },
+      { year: 1994, transistors: 3105900.2 },
+      { year: 1995, transistors: 9646616 },
+      { year: 1996, transistors: 9646616 },
+      { year: 1997, transistors: 9646616 },
+      { year: 1998, transistors: 15261378 },
+      { year: 1999, transistors: 21673922 },
+      { year: 2000, transistors: 37180264 },
+      { year: 2001, transistors: 42550656 },
+      { year: 2002, transistors: 220673400 },
+      { year: 2003, transistors: 220673400 },
+      { year: 2004, transistors: 273842000 },
+      { year: 2005, transistors: 305052770 },
+      { year: 2006, transistors: 582941600 },
+      { year: 2007, transistors: 805842200 },
+      { year: 2008, transistors: 805842200 },
+      { year: 2009, transistors: 2308241400 },
+      { year: 2010, transistors: 2308241400 },
+      { year: 2011, transistors: 2600000000 },
+      { year: 2012, transistors: 2600000000 },
+      { year: 2013, transistors: 5000000000 },
+      { year: 2014, transistors: 5700000000 },
+      { year: 2016, transistors: 8000000000 },
+      { year: 2017, transistors: 19200000000 },
+      { year: 2018, transistors: 21100000000 },
+      { year: 2019, transistors: 39500000000 },
+      { year: 2020, transistors: 39500000000 },
+      { year: 2021, transistors: 58200000000 }
+    ];
+
+    let useSimpleScale = false;
+
+    function toggleScale() {
+      useSimpleScale = !useSimpleScale;
+      renderTransistorChart();
+    }
+
+    function renderTransistorChart() {
+      const svg = document.getElementById('transistor-chart');
+      if (!svg) return;
+      
+      const container = svg.parentElement;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      const padding = { top: 50, right: 40, bottom: 60, left: 100 };
+      const chartWidth = width - padding.left - padding.right;
+      const chartHeight = height - padding.top - padding.bottom;
+
+      const minYear = 1970;
+      const maxYear = 2026;
+      const maxTransistors = Math.max(...transistorData.map(d => d.transistors));
+
+      svg.innerHTML = '';
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+      const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      title.setAttribute('x', width / 2);
+      title.setAttribute('y', 25);
+      title.setAttribute('text-anchor', 'middle');
+      title.setAttribute('font-size', '16');
+      title.setAttribute('font-weight', '600');
+      title.setAttribute('fill', '#1a1510');
+      title.textContent = 'Transistors per Microprocessor (1971-2025)';
+      svg.appendChild(title);
+
+      let gridLines, yScale;
+      
+      const xScale = (year) => padding.left + ((year - minYear) / (maxYear - minYear)) * chartWidth;
+      
+      if (useSimpleScale) {
+        const minValue = 0;
+        const maxValue = 60e9;
+        gridLines = [0, 10e9, 20e9, 30e9, 40e9, 50e9, 60e9];
+        yScale = (transistors) => {
+          return padding.top + chartHeight - ((transistors - minValue) / (maxValue - minValue)) * chartHeight;
+        };
+      } else {
+        const minLog = Math.log10(1000);
+        const maxLog = Math.log10(60e9);
+        gridLines = [1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 60e9];
+        yScale = (transistors) => {
+          const logValue = Math.log10(transistors);
+          return padding.top + chartHeight - ((logValue - minLog) / (maxLog - minLog)) * chartHeight;
+        };
+      }
+
+      gridLines.forEach(value => {
+        const y = yScale(value);
+        if (y < padding.top || y > height - padding.bottom) return;
+        
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', padding.left);
+        line.setAttribute('y1', y);
+        line.setAttribute('x2', width - padding.right);
+        line.setAttribute('y2', y);
+        line.setAttribute('stroke', '#c8b89a');
+        line.setAttribute('stroke-width', '1');
+        line.setAttribute('opacity', '0.3');
+        svg.appendChild(line);
+
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', padding.left - 10);
+        label.setAttribute('y', y + 4);
+        label.setAttribute('text-anchor', 'end');
+        label.setAttribute('font-size', '11');
+        label.setAttribute('fill', '#6b5d4f');
+        let labelText;
+        if (useSimpleScale) {
+          labelText = (value / 1e9).toFixed(0) + 'B';
+        } else {
+          if (value >= 1e9) {
+            labelText = (value / 1e9).toFixed(0) + 'B';
+          } else if (value >= 1e6) {
+            labelText = (value / 1e6).toFixed(0) + 'M';
+          } else if (value >= 1e3) {
+            labelText = (value / 1e3).toFixed(0) + 'K';
+          }
+        }
+        label.textContent = labelText;
+        svg.appendChild(label);
+      });
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      let pathData = '';
+      transistorData.forEach((d, i) => {
+        const x = xScale(d.year);
+        const y = yScale(d.transistors);
+        pathData += (i === 0 ? 'M' : 'L') + x + ',' + y + ' ';
+      });
+      path.setAttribute('d', pathData);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', '#c0392b');
+      path.setAttribute('stroke-width', '3');
+      path.style.transition = 'd 0.6s ease-in-out';
+      svg.appendChild(path);
+
+      transistorData.forEach(d => {
+        const x = xScale(d.year);
+        const y = yScale(d.transistors);
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', x);
+        circle.setAttribute('cy', y);
+        circle.setAttribute('r', '5');
+        circle.setAttribute('fill', '#c0392b');
+        circle.style.transition = 'cx 0.6s ease-in-out, cy 0.6s ease-in-out';
+        svg.appendChild(circle);
+      });
+
+      const xAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      xAxis.setAttribute('x1', padding.left);
+      xAxis.setAttribute('y1', height - padding.bottom);
+      xAxis.setAttribute('x2', width - padding.right);
+      xAxis.setAttribute('y2', height - padding.bottom);
+      xAxis.setAttribute('stroke', '#1a1510');
+      xAxis.setAttribute('stroke-width', '2');
+      svg.appendChild(xAxis);
+
+      const yAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      yAxis.setAttribute('x1', padding.left);
+      yAxis.setAttribute('y1', padding.top);
+      yAxis.setAttribute('x2', padding.left);
+      yAxis.setAttribute('y2', height - padding.bottom);
+      yAxis.setAttribute('stroke', '#1a1510');
+      yAxis.setAttribute('stroke-width', '2');
+      svg.appendChild(yAxis);
+
+      [1970, 1980, 1990, 2000, 2010, 2020].forEach(year => {
+        const x = xScale(year);
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', x);
+        label.setAttribute('y', height - padding.bottom + 20);
+        label.setAttribute('text-anchor', 'middle');
+        label.setAttribute('font-size', '12');
+        label.setAttribute('fill', '#1a1510');
+        label.textContent = year;
+        svg.appendChild(label);
+      });
+
+      const xAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      xAxisLabel.setAttribute('x', width / 2);
+      xAxisLabel.setAttribute('y', height - 10);
+      xAxisLabel.setAttribute('text-anchor', 'middle');
+      xAxisLabel.setAttribute('font-size', '13');
+      xAxisLabel.setAttribute('font-weight', '500');
+      xAxisLabel.setAttribute('fill', '#6b5d4f');
+      xAxisLabel.textContent = 'Year';
+      svg.appendChild(xAxisLabel);
+
+      const yAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      yAxisLabel.setAttribute('x', -(height / 2));
+      yAxisLabel.setAttribute('y', 20);
+      yAxisLabel.setAttribute('text-anchor', 'middle');
+      yAxisLabel.setAttribute('font-size', '13');
+      yAxisLabel.setAttribute('font-weight', '500');
+      yAxisLabel.setAttribute('fill', '#6b5d4f');
+      yAxisLabel.setAttribute('transform', 'rotate(-90)');
+      yAxisLabel.textContent = useSimpleScale ? 'Number of Transistors (linear scale)' : 'Number of Transistors (logarithmic scale)';
+      svg.appendChild(yAxisLabel);
+    }
+
+    window.addEventListener('load', renderTransistorChart);
+    window.addEventListener('resize', () => {
+      renderTransistorChart();
+      if (cur === 21) renderPriceChart();
+    });
+
+    // baseline slider (Slide 17, index 16)
+    const blData = [
+      { year: 1971, lifespan: '10+ yrs', storage: 'none', ram: '256 bytes', cpu: '1 MHz' },
+      { year: 1975, lifespan: '10+ yrs', storage: '8" floppy (80 KB)', ram: '4 KB', cpu: '2 MHz' },
+      { year: 1981, lifespan: '8+ yrs', storage: '5.25" floppy (360 KB)', ram: '16 KB', cpu: '4.77 MHz' },
+      { year: 1984, lifespan: '7+ yrs', storage: '400 KB floppy', ram: '128 KB', cpu: '8 MHz' },
+      { year: 1990, lifespan: '6–7 yrs', storage: '40 MB HDD', ram: '1 MB', cpu: '25 MHz' },
+      { year: 1995, lifespan: '5–6 yrs', storage: '1.2 GB HDD', ram: '8 MB', cpu: '100 MHz' },
+      { year: 2000, lifespan: '4–5 yrs', storage: '30 GB HDD', ram: '128 MB', cpu: '1 GHz' },
+      { year: 2005, lifespan: '4 yrs', storage: '120 GB HDD', ram: '512 MB', cpu: '2.5 GHz' },
+      { year: 2010, lifespan: '3–4 yrs', storage: '500 GB HDD', ram: '4 GB', cpu: '3 GHz' },
+      { year: 2015, lifespan: '3–4 yrs', storage: '256 GB SSD', ram: '8 GB', cpu: '3.5 GHz' },
+      { year: 2020, lifespan: '3 yrs', storage: '512 GB SSD', ram: '16 GB', cpu: '3.8 GHz' },
+      { year: 2025, lifespan: '3 yrs', storage: '1 TB SSD', ram: '16–32 GB', cpu: '4+ GHz' },
+    ];
+
+    function getBaseline(year) {
+      let snap = blData[0];
+      for (const d of blData) { if (d.year <= year) snap = d; }
+      return snap;
+    }
+
+    function updateSlider() {
+      const slider = document.getElementById('yearSlider');
+      if (!slider) return;
+      const yr = parseInt(slider.value);
+      document.getElementById('yearDisplay').textContent = yr;
+      document.getElementById('currentYearLabel').textContent = yr;
+      const d = getBaseline(yr);
+      document.getElementById('lifespanVal').textContent = d.lifespan;
+      document.getElementById('storageVal').textContent = d.storage;
+      document.getElementById('ramVal').textContent = d.ram;
+      document.getElementById('cpuVal').textContent = d.cpu;
+    }
+
+    (function() {
+      const slider = document.getElementById('yearSlider');
+      if (slider) slider.addEventListener('input', updateSlider);
+    })();
+
+    // price paradox chart (Slide 22, index 21)
+    const gpuData = [
+      { year: '1998', label: 'Riva TNT', nominal: 200, adjusted: 375 },
+      { year: '2004', label: 'GeForce 6800', nominal: 300, adjusted: 483 },
+      { year: '2012', label: 'GTX 680', nominal: 500, adjusted: 660 },
+      { year: '2024', label: 'RTX 4070', nominal: 600, adjusted: 600 },
+    ];
+
+    function renderPriceChart() {
+      const svg = document.getElementById('price-chart');
+      if (!svg) return;
+      const container = svg.parentElement;
+      const W = container.clientWidth, H = container.clientHeight;
+      const pad = { top: 40, right: 20, bottom: 60, left: 70 };
+      const cw = W - pad.left - pad.right;
+      const ch = H - pad.top - pad.bottom;
+      const maxVal = 800;
+
+      svg.innerHTML = '';
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+      const yScale = v => pad.top + ch - (v / maxVal) * ch;
+      const groupW = cw / gpuData.length;
+      const barW = groupW * 0.28;
+
+      // y grid + labels
+      [0, 200, 400, 600, 800].forEach(v => {
+        const y = yScale(v);
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', pad.left); line.setAttribute('x2', W - pad.right);
+        line.setAttribute('y1', y); line.setAttribute('y2', y);
+        line.setAttribute('stroke', '#c8b89a'); line.setAttribute('stroke-width', '1'); line.setAttribute('opacity', '0.4');
+        svg.appendChild(line);
+        const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        t.setAttribute('x', pad.left - 8); t.setAttribute('y', y + 4);
+        t.setAttribute('text-anchor', 'end'); t.setAttribute('font-size', '11'); t.setAttribute('fill', '#6b5d4f');
+        t.textContent = '$' + v;
+        svg.appendChild(t);
+      });
+
+      gpuData.forEach((d, i) => {
+        const cx = pad.left + groupW * i + groupW / 2;
+
+        // nominal bar
+        const nh = (d.nominal / maxVal) * ch;
+        const nr = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        nr.setAttribute('x', cx - barW - 4); nr.setAttribute('y', yScale(d.nominal));
+        nr.setAttribute('width', barW); nr.setAttribute('height', nh);
+        nr.setAttribute('fill', '#c8b89a'); nr.setAttribute('rx', '3');
+        svg.appendChild(nr);
+
+        // adjusted bar
+        const ah = (d.adjusted / maxVal) * ch;
+        const ar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        ar.setAttribute('x', cx + 4); ar.setAttribute('y', yScale(d.adjusted));
+        ar.setAttribute('width', barW); ar.setAttribute('height', ah);
+        ar.setAttribute('fill', '#c0392b'); ar.setAttribute('rx', '3'); ar.setAttribute('opacity', '0.7');
+        svg.appendChild(ar);
+
+        // year label
+        const yl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        yl.setAttribute('x', cx); yl.setAttribute('y', H - pad.bottom + 18);
+        yl.setAttribute('text-anchor', 'middle'); yl.setAttribute('font-size', '12'); yl.setAttribute('fill', '#1a1510');
+        yl.textContent = d.year;
+        svg.appendChild(yl);
+
+        // gpu label
+        const gl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        gl.setAttribute('x', cx); gl.setAttribute('y', H - pad.bottom + 34);
+        gl.setAttribute('text-anchor', 'middle'); gl.setAttribute('font-size', '10'); gl.setAttribute('fill', '#6b5d4f');
+        gl.textContent = d.label;
+        svg.appendChild(gl);
+      });
+
+      // legend
+      [['#c8b89a', 'Nominal price'], ['#c0392b', 'Inflation-adjusted']].forEach(([color, label], i) => {
+        const lx = pad.left + i * 200;
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x', lx); rect.setAttribute('y', 8);
+        rect.setAttribute('width', 14); rect.setAttribute('height', 14);
+        rect.setAttribute('fill', color); rect.setAttribute('rx', '2');
+        svg.appendChild(rect);
+        const lt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        lt.setAttribute('x', lx + 20); lt.setAttribute('y', 20);
+        lt.setAttribute('font-size', '12'); lt.setAttribute('fill', '#1a1510');
+        lt.textContent = label;
+        svg.appendChild(lt);
+      });
+
+      // y axis
+      const ya = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      ya.setAttribute('x1', pad.left); ya.setAttribute('x2', pad.left);
+      ya.setAttribute('y1', pad.top); ya.setAttribute('y2', H - pad.bottom);
+      ya.setAttribute('stroke', '#1a1510'); ya.setAttribute('stroke-width', '2');
+      svg.appendChild(ya);
+    }
+  </script>
+</body>
+</html>
