@@ -43,6 +43,9 @@
     .deck {
       width: 100%;
       max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .progress-bar {
@@ -372,6 +375,7 @@
       align-items: center;
       gap: 16px;
       margin-top: 24px;
+      width: 100%;
     }
 
     .nav button {
@@ -570,6 +574,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      justify-content: center;
     }
 
     .stat-year {
@@ -712,6 +717,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
       gap: 10px;
     }
@@ -727,8 +733,9 @@
 
     .works-cited-list { width: 100%; font-size: 13px; line-height: 1.8; color: var(--text); }
     .wc-placeholder { color: var(--text3); font-style: italic; }
+    .wc-entry { font-size: 12px; line-height: 1.6; color: var(--text); margin-bottom: 8px; padding-left: 2em; text-indent: -2em; }
 
-    /* Slide 7 — hobbyists -> consumers */
+    /* Slide 7. hobbyists -> consumers */
     .tx-layout {
       display: flex;
       align-items: center;
@@ -823,10 +830,6 @@
       color: rgba(253, 250, 244, 0.4);
     }
 
-    #slide-transform.transformed 
-
-    #slide-transform.transformed 
-
     #slide-transform.transformed .tx-img1 { opacity: 0; }
 
     #slide-transform.transformed .tx-img2 {
@@ -853,7 +856,7 @@
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">shifting baselines — consumer computing</span>
+<span class="window-title">shifting baselines. consumer computing</span>
 </div>
 <div class="slide-content">
 <h1 class="slide-title">What are the consequences of a computing industry that advances faster than the consumers it serves?</h1>
@@ -873,12 +876,12 @@
 <div class="slide-content">
 <div class="image-container">
 <div class="image-with-caption">
-<img alt="Steve Jobs garage — Apple's first HQ" src="https://miro.medium.com/v2/resize:fit:1260/1*MT6qJa4TgZfXMOPa-CaBlw.jpeg"/>
-<div class="image-caption">Steve Jobs&apos; garage, Apple&apos;s first HQ &mdash; (<a href="https://medium.com/macoclock/i-visited-steve-jobs-garage-apple-s-first-hq-apple-park-here-s-what-i-learned-0a2899fb509f" target="_blank" style="color:var(--accent);">Medium &mdash; MacOClock</a>)</div>
+<img alt="Steve Jobs garage. Apple's first HQ" src="https://miro.medium.com/v2/resize:fit:1260/1*MT6qJa4TgZfXMOPa-CaBlw.jpeg"/>
+<div class="image-caption">Steve Jobs&apos; garage, Apple&apos;s first HQ. (<a href="https://medium.com/macoclock/i-visited-steve-jobs-garage-apple-s-first-hq-apple-park-here-s-what-i-learned-0a2899fb509f" target="_blank" style="color:var(--accent);">Medium. MacOClock</a>)</div>
 </div>
 <div class="image-with-caption">
 <img alt="New Apple CEO announcement 2026" src="https://cdn.geekwire.com/wp-content/uploads/2026/04/Apple-John-Ternus-Tim-Cook-1-1260x1008.jpg"/>
-<div class="image-caption">New Apple CEO announcement, 2026 &mdash; (<a href="https://www.geekwire.com/2026/former-advisor-to-steve-jobs-says-new-apple-ceo-is-exactly-whats-needed-an-engineer-from-the-inside/" target="_blank" style="color:var(--accent);">GeekWire</a>)</div>
+<div class="image-caption">New Apple CEO announcement, 2026. (<a href="https://www.geekwire.com/2026/former-advisor-to-steve-jobs-says-new-apple-ceo-is-exactly-whats-needed-an-engineer-from-the-inside/" target="_blank" style="color:var(--accent);">GeekWire</a>)</div>
 </div>
 </div>
 </div>
@@ -889,7 +892,7 @@
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">the hobbyist era — 1970s</span>
+<span class="window-title">the hobbyist era. 1970s</span>
 </div>
 
 
@@ -900,11 +903,11 @@
 <div class="image-container">
 <div class="image-with-caption">
 <img alt="Homebrew Computer Club" src="http://www.bambi.net/bob/bob.gif"/>
-<div class="image-caption">The Homebrew Computer Club &mdash; (<a href="http://www.bambi.net/bob/homebrew.html" target="_blank" style="color:var(--accent);">bambi.net</a>)</div>
+<div class="image-caption">The Homebrew Computer Club. (<a href="http://www.bambi.net/bob/homebrew.html" target="_blank" style="color:var(--accent);">bambi.net</a>)</div>
 </div>
 <div class="image-with-caption">
 <img alt="Altair 8800" src="https://www.emustudio.net/documentation/user/assets/altair8800/altair8800.png"/>
-<div class="image-caption">Altair 8800, 1975, $395 ($2,000 today) &mdash; (<a href="https://www.emustudio.net/documentation/user/altair8800/" target="_blank" style="color:var(--accent);">emuStudio</a>)</div>
+<div class="image-caption">Altair 8800, 1975, $395 ($2,000 today). (<a href="https://www.emustudio.net/documentation/user/altair8800/" target="_blank" style="color:var(--accent);">emuStudio</a>)</div>
 </div>
 </div>
 </div>
@@ -916,7 +919,7 @@
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">the pivot — 1980s</span>
+<span class="window-title">the pivot. 1980s</span>
 </div>
 
 
@@ -926,12 +929,12 @@
 <div class="image-container">
 <div class="image-with-caption">
 <img alt="IBM PC 5150" src="https://ids.si.edu/ids/deliveryService?id=NMAH-AHB2016q152473&amp;max=600"/>
-<div class="image-caption">IBM PC 5150 &mdash; (<a href="https://americanhistory.si.edu/collections/object/nmah_1323282" target="_blank" style="color:var(--accent);">Smithsonian</a>)</div>
+<div class="image-caption">IBM PC 5150. (<a href="https://americanhistory.si.edu/collections/object/nmah_1323282" target="_blank" style="color:var(--accent);">Smithsonian</a>)</div>
 <p style="font-size: 13px; margin-top: 8px; color: var(--text); text-align: center;"><strong>IBM PC 1981:</strong><br/>$1,565 &rarr; $5,540 today<br/>4.77 MHz</p>
 </div>
 <div class="image-with-caption">
 <img alt="Original 1984 Macintosh" src="https://images.computerhistory.org/timeline/timeline_computers_1984.applemacintosh.jpg"/>
-<div class="image-caption">Original 1984 Macintosh &mdash; (<a href="https://www.computerhistory.org/timeline/1984/" target="_blank" style="color:var(--accent);">Computer History Museum</a>)</div>
+<div class="image-caption">Original 1984 Macintosh. (<a href="https://www.computerhistory.org/timeline/1984/" target="_blank" style="color:var(--accent);">Computer History Museum</a>)</div>
 <p style="font-size: 13px; margin-top: 8px; color: var(--text); text-align: center;"><strong>Mac 1984:</strong><br/>$2,495 &rarr; $6,543 today<br/>7.83 MHz</p>
 </div>
 </div>
@@ -945,7 +948,7 @@
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">the acceleration — decade by decade</span>
+<span class="window-title">the acceleration. decade by decade</span>
 </div>
 
 
@@ -1001,9 +1004,9 @@
 </tbody>
 </table>
 <div style="margin-top:10px;font-size:11px;color:var(--text3);line-height:1.8;">
-Inflation-adjusted prices: (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St. &mdash; Cost of a Computer Every Year Since 1970</a>) &nbsp;&middot;&nbsp;
+Inflation-adjusted prices: (<a href="https://247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/" target="_blank" style="color:var(--accent);">247 Wall St.. Cost of a Computer Every Year Since 1970</a>) &nbsp;&middot;&nbsp;
 Machine specs &amp; capabilities: (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--accent);">Computer History Museum Timeline</a>) &nbsp;&middot;&nbsp;
-CPU speed history: (<a href="https://pcsite.medium.com/how-processor-speeds-have-increased-over-the-decades-2f889c212525" target="_blank" style="color:var(--accent);">Medium &mdash; PC Site</a>, <a href="https://ms.codes/en-ca/blogs/computer-hardware/cpu-clock-speed-history-graph" target="_blank" style="color:var(--accent);">MS Codes</a>, <a href="https://umatechnology.org/cpu-clock-speed-history-graph/" target="_blank" style="color:var(--accent);">UMA Technology</a>, <a href="https://www.computerhope.com/history/processor.htm" target="_blank" style="color:var(--accent);">Computer Hope</a>, <a href="https://hardwarehub.basalt.cc/blog/historical-overview-cpu-clock-speed-advancements-25" target="_blank" style="color:var(--accent);">Hardware Hub</a>)
+CPU speed history: (<a href="https://pcsite.medium.com/how-processor-speeds-have-increased-over-the-decades-2f889c212525" target="_blank" style="color:var(--accent);">Medium. PC Site</a>, <a href="https://ms.codes/en-ca/blogs/computer-hardware/cpu-clock-speed-history-graph" target="_blank" style="color:var(--accent);">MS Codes</a>, <a href="https://umatechnology.org/cpu-clock-speed-history-graph/" target="_blank" style="color:var(--accent);">UMA Technology</a>, <a href="https://www.computerhope.com/history/processor.htm" target="_blank" style="color:var(--accent);">Computer Hope</a>, <a href="https://hardwarehub.basalt.cc/blog/historical-overview-cpu-clock-speed-advancements-25" target="_blank" style="color:var(--accent);">Hardware Hub</a>)
 </div>
 </div>
 </div>
@@ -1014,7 +1017,7 @@ CPU speed history: (<a href="https://pcsite.medium.com/how-processor-speeds-have
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">the growth curve — transistor count</span>
+<span class="window-title">the growth curve. transistor count</span>
 </div>
 
 
@@ -1026,7 +1029,7 @@ CPU speed history: (<a href="https://pcsite.medium.com/how-processor-speeds-have
 <svg height="100%" id="transistor-chart" width="100%"></svg>
 </div>
 <div style="margin-top:10px;font-size:11px;color:var(--text3);line-height:1.8;">
-Data: (<a href="https://ourworldindata.org/grapher/transistors-per-microprocessor" target="_blank" style="color:var(--accent);">Our World in Data &mdash; Transistors per Microprocessor</a>) &nbsp;&middot;&nbsp;
+Data: (<a href="https://ourworldindata.org/grapher/transistors-per-microprocessor" target="_blank" style="color:var(--accent);">Our World in Data. Transistors per Microprocessor</a>) &nbsp;&middot;&nbsp;
 Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-price-trends-for-computers-tvs-and-related-items.htm" target="_blank" style="color:var(--accent);">US Bureau of Labor Statistics</a>)
 </div>
 </div>
@@ -1055,8 +1058,8 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="tx-s2">CONSUMERS</span>
 </div>
 <div class="tx-sub">
-<span class="tx-s1">1975 &mdash; built to understand</span>
-<span class="tx-s2">1981 &mdash; built to sell</span>
+<span class="tx-s1">1975. built to understand</span>
+<span class="tx-s2">1981. built to sell</span>
 </div>
 </div>
 <div class="tx-img-wrap">
@@ -1065,12 +1068,12 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 </div>
 </div>
 <div style="font-size:10px;color:var(--text3);text-align:center;margin-top:6px;" class="tx-s1">
-(<a href="http://www.bambi.net/bob/homebrew.html" target="_blank" style="color:var(--text3);">Homebrew Club &mdash; bambi.net</a>) &nbsp;&middot;&nbsp;
-(<a href="https://www.emustudio.net/documentation/user/altair8800/" target="_blank" style="color:var(--text3);">Altair 8800 &mdash; emuStudio</a>)
+(<a href="http://www.bambi.net/bob/homebrew.html" target="_blank" style="color:var(--text3);">Homebrew Club. bambi.net</a>) &nbsp;&middot;&nbsp;
+(<a href="https://www.emustudio.net/documentation/user/altair8800/" target="_blank" style="color:var(--text3);">Altair 8800. emuStudio</a>)
 </div>
 <div style="font-size:10px;color:rgba(253,250,244,0.4);text-align:center;margin-top:6px;" class="tx-s2">
-(<a href="http://www.floridahistorynetwork.com/aug-12-1981---developed-in-boca-raton-first-pc-released-by-ibm.html" target="_blank" style="color:rgba(253,250,244,0.4);">IBM PC &mdash; Florida History Network</a>) &nbsp;&middot;&nbsp;
-(<a href="https://www.computerhistory.org/timeline/1984/" target="_blank" style="color:rgba(253,250,244,0.4);">Mac 1984 &mdash; Computer History Museum</a>)
+(<a href="http://www.floridahistorynetwork.com/aug-12-1981---developed-in-boca-raton-first-pc-released-by-ibm.html" target="_blank" style="color:rgba(253,250,244,0.4);">IBM PC. Florida History Network</a>) &nbsp;&middot;&nbsp;
+(<a href="https://www.computerhistory.org/timeline/1984/" target="_blank" style="color:rgba(253,250,244,0.4);">Mac 1984. Computer History Museum</a>)
 </div>
 </div>
 </div>
@@ -1093,15 +1096,16 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">wirth's law — software bloat</span>
+<span class="window-title">wirth's law. software bloat</span>
 </div>
 <div class="slide-content" style="gap:14px;">
 <h3 class="slide-headline">Software grows faster than hardware improves</h3>
 <div class="pull-quote" style="margin:0;">
   <div class="pull-quote-text">&ldquo;Software is getting slower more rapidly than hardware becomes faster.&rdquo;</div>
-  <div class="pull-quote-attr">&mdash; Niklaus Wirth, <em>A Plea for Lean Software</em>, 1995 (<a href="https://en.wikipedia.org/wiki/Wirth%27s_law" target="_blank" style="color:var(--accent);">Wikipedia &mdash; Wirth&apos;s Law</a>)</div>
+  <div class="pull-quote-attr"> Niklaus Wirth, <em>A Plea for Lean Software</em>, 1995 (<a href="https://en.wikipedia.org/wiki/Wirth%27s_law" target="_blank" style="color:var(--accent);">Wikipedia. Wirth&apos;s Law</a>)</div>
 </div>
-<img src="assets/windows_size.png" style="width:100%;flex:1;border-radius:4px;object-fit:contain;min-height:0;">
+<img src="assets/windows_size.png" style="width:70%;flex:1;border-radius:4px;object-fit:contain;min-height:0;display:block;margin:0 auto;">
+<div style="font-size:11px;color:var(--text3);text-align:center;margin-top:4px;">Sources: <a href="https://en.wikipedia.org/wiki/Windows_1.0" target="_blank" style="color:var(--text3);">Wikipedia. Windows version articles</a> &middot; <a href="https://support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3" target="_blank" style="color:var(--text3);">Microsoft System Requirements</a></div>
 </div>
 </div>
 <!-- Slide 10: Planned Obsolescence Defined -->
@@ -1110,31 +1114,54 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">planned obsolescence</span>
+<span class="window-title">pc replacement cycles. then vs now</span>
 </div>
-<div class="slide-content">
-<h3 class="slide-headline">Not all obsolescence is natural</h3>
-<div style="display:flex;gap:20px;flex:1;align-items:stretch;">
-  <div class="two-col" style="flex:1.2;">
-    <div class="col-box col-box-sage">
-      <div class="col-box-label">NATURAL</div>
-      <p>Technology improves, old hardware genuinely can&apos;t keep up. The gap between what software demands and what the device can do becomes real.</p>
-      
-    </div>
-    <div class="col-box col-box-accent">
-      <div class="col-box-label">ENGINEERED</div>
-      <p>Companies deliberately limit device lifespan through software updates, parts unavailability, or policy &mdash; to drive new purchases.</p>
-      
-    </div>
-  </div>
-  <div style="flex:0.85;display:flex;flex-direction:column;gap:8px;">
-    <div style="background:var(--bg-bar);border:2px dashed var(--border);border-radius:4px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.07em;color:var(--accent);text-transform:uppercase;">Add image here</div>
-      <div style="font-size:12px;color:var(--text2);line-height:1.6;">Screenshot the device lifespan decline chart from Statista showing average smartphone replacement cycle shortening from ~33 months (2016) to ~28 months (2023).<br><br>URL: <a href="https://www.statista.com/statistics/619788/average-smartphone-life/" target="_blank" style="color:var(--accent);">statista.com/statistics/619788/average-smartphone-life/</a></div>
-      <div style="font-size:10px;color:var(--text3);font-family:monospace;">Save as: images/lifespan-decline.png</div>
-    </div>
-    <div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://www.statista.com/statistics/619788/average-smartphone-life/" target="_blank" style="color:var(--accent);">Statista</a>)</div>
-  </div>
+<div class="slide-content" style="gap:12px;">
+<h3 class="slide-headline">How long a computer was expected to last</h3>
+<table style="width:100%;border-collapse:collapse;flex:1;font-size:13px;">
+<thead>
+<tr style="background:var(--accent3);border-bottom:2px solid var(--border);">
+<th style="padding:10px 14px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.06em;color:var(--text);font-weight:400;">Era</th>
+<th style="padding:10px 14px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.06em;color:var(--text);font-weight:400;">Avg. Replacement Cycle</th>
+<th style="padding:10px 14px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.06em;color:var(--text);font-weight:400;">Context</th>
+<th style="padding:10px 14px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.06em;color:var(--text);font-weight:400;">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--border);">
+<td style="padding:10px 14px;color:var(--text);font-weight:600;">1980s</td>
+<td style="padding:10px 14px;color:#7ba05b;font-weight:700;">10+ years</td>
+<td style="padding:10px 14px;color:var(--text2);">IBM PC ran the same software for a decade with zero degradation. Obsolescence was physical.</td>
+<td style="padding:10px 14px;"><a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);font-size:12px;">iFixit</a></td>
+</tr>
+<tr style="border-bottom:1px solid var(--border);background:var(--bg-bar);">
+<td style="padding:10px 14px;color:var(--text);font-weight:600;">Early 1990s</td>
+<td style="padding:10px 14px;color:#7ba05b;font-weight:700;">7–8 years</td>
+<td style="padding:10px 14px;color:var(--text2);">Enterprise IT departments standardized 7-year refresh cycles. Hardware outpaced software demands.</td>
+<td style="padding:10px 14px;"><a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);font-size:12px;">iFixit</a></td>
+</tr>
+<tr style="border-bottom:1px solid var(--border);">
+<td style="padding:10px 14px;color:var(--text);font-weight:600;">Early 2000s</td>
+<td style="padding:10px 14px;color:#d4845a;font-weight:700;">4 years</td>
+<td style="padding:10px 14px;color:var(--text2);">Windows XP drove upgrade pressure. Intel CEO later confirmed: "Four years was the average."</td>
+<td style="padding:10px 14px;"><a href="https://www.pcworld.com/article/415068/the-pc-upgrade-cycle-slows-to-every-five-to-six-years-intels-ceo-says.html" target="_blank" style="color:var(--accent);font-size:12px;">PCWorld / Krzanich</a></td>
+</tr>
+<tr style="border-bottom:1px solid var(--border);background:var(--bg-bar);">
+<td style="padding:10px 14px;color:var(--text);font-weight:600;">2016</td>
+<td style="padding:10px 14px;color:#d4845a;font-weight:700;">5–6 years</td>
+<td style="padding:10px 14px;color:var(--text2);">Cycles briefly lengthened as hardware improvement slowed, not because devices lasted longer, but because the next device wasn't meaningfully faster.</td>
+<td style="padding:10px 14px;"><a href="https://www.pcworld.com/article/415068/the-pc-upgrade-cycle-slows-to-every-five-to-six-years-intels-ceo-says.html" target="_blank" style="color:var(--accent);font-size:12px;">PCWorld / Krzanich</a></td>
+</tr>
+<tr style="border-bottom:1px solid var(--border);">
+<td style="padding:10px 14px;color:var(--text);font-weight:600;">2024</td>
+<td style="padding:10px 14px;color:#c0392b;font-weight:700;">3.7 years</td>
+<td style="padding:10px 14px;color:var(--text2);">Windows 11 hardware requirements, AI feature gating, and planned obsolescence drive replacement even as hardware improvement slows.</td>
+<td style="padding:10px 14px;"><a href="https://sobrii.io/blog/computer-lifespan-real-numbers-2026" target="_blank" style="color:var(--accent);font-size:12px;">Gartner via Sobrii</a></td>
+</tr>
+</tbody>
+</table>
+<div style="font-size:12px;color:var(--text2);padding:8px 12px;background:var(--accent3);border-left:3px solid var(--accent);border-radius:0 4px 4px 0;line-height:1.6;">
+The 2016 blip where cycles <em>lengthened</em> is telling: hardware stopped improving fast enough to justify replacing. By 2024 they shortened again. not because hardware got better, but because software policy made old hardware incompatible. (<a href="https://www.pcworld.com/article/415068/the-pc-upgrade-cycle-slows-to-every-five-to-six-years-intels-ceo-says.html" target="_blank" style="color:var(--accent);">PCWorld</a>, <a href="https://sobrii.io/blog/computer-lifespan-real-numbers-2026" target="_blank" style="color:var(--accent);">Sobrii/Gartner</a>)
 </div>
 </div>
 </div>
@@ -1144,60 +1171,26 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">apple battery throttling — 2017</span>
+<span class="window-title">apple battery throttling. 2017</span>
 </div>
-<div class="slide-content">
-<h3 class="slide-headline" style="font-size:46px;">Caught.</h3>
-<div class="stat-row" style="margin-bottom:14px;">
-<div class="stat-card">
+<div class="slide-content" style="gap:12px;">
+<div class="stat-row" style="flex:1;align-items:stretch;">
+<div class="stat-card" style="flex:1;">
 <div class="stat-year">2017</div>
-<div class="stat-text">Apple admitted slowing older iPhones via software update &mdash; without telling users. Lawsuit filed within days of disclosure.</div>
+<div class="stat-text">Apple admitted slowing older iPhones via software update. Without telling users (lawsuit filed within days of disclosure) (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune</a>)</div>
 </div>
-<div class="stat-card">
+<div class="stat-card" style="flex:1;">
 <div class="stat-year">$500M</div>
 <div class="stat-text">Class action settlement reached in 2020. Apple denied wrongdoing, said it settled only to &ldquo;avoid burdensome litigation.&rdquo; (<a href="https://www.macrumors.com/2020/03/02/apple-agrees-to-up-to-500m-batterygate-settlement/" target="_blank" style="color:var(--accent);">MacRumors</a>)</div>
 </div>
-<div class="stat-card">
+<div class="stat-card" style="flex:1;">
 <div class="stat-year">~$92</div>
-<div class="stat-text">Actual payout per affected user. iPhone 6, 6S, 7, SE owners &mdash; millions with working phones that had been secretly slowed. (<a href="https://www.macrumors.com/2024/01/06/apple-starts-iphone-batterygate-payouts/" target="_blank" style="color:var(--accent);">MacRumors</a>)</div>
+<div class="stat-text">Actual payout per affected user. iPhone 6, 6S, 7, SE owners. Millions with working phones that had been secretly slowed. (<a href="https://www.macrumors.com/2024/01/06/apple-starts-iphone-batterygate-payouts/" target="_blank" style="color:var(--accent);">MacRumors</a>)</div>
 </div>
-</div>
-<div class="pull-quote" style="margin-bottom:10px;">
-<div class="pull-quote-text">&ldquo;We know that some of you feel Apple has let you down. We apologize. We have never &mdash; and would never &mdash; do anything to intentionally shorten the life of any Apple product, or degrade the user experience to drive customer upgrades.&rdquo;</div>
-<div class="pull-quote-attr">&mdash; Apple official statement, December 28, 2017 (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune</a>)</div>
 </div>
 <div class="pull-quote" style="margin:0;">
-<div class="pull-quote-text">&ldquo;Had Plaintiffs been informed by Apple that a simple battery replacement would have improved the performance of their iPhones, Plaintiffs would have chosen to replace their batteries &mdash; clearly a more cost-effective method rather than upgrading to a new iPhone.&rdquo;</div>
-<div class="pull-quote-attr">&mdash; Class action complaint, Eastern District of New York (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune</a>)</div>
-</div>
-</div>
-</div>
-<!-- Slide 12: Who Controls the Baseline -->
-<div class="slide">
-<div class="window-bar">
-<span class="dot red"></span>
-<span class="dot yellow"></span>
-<span class="dot green"></span>
-<span class="window-title">who controls the baseline</span>
-</div>
-<div class="slide-content">
-<h3 class="slide-headline">You don't decide when your device is obsolete. They do.</h3>
-<div class="three-cards">
-<div class="info-card">
-<div class="img-placeholder" style="height:60px;margin-bottom:12px;">Microsoft logo</div>
-<div class="info-card-title">Microsoft</div>
-<div class="info-card-body">Ending Windows 10 support October 2025 — hundreds of millions of PCs pushed toward hardware replacement</div>
-</div>
-<div class="info-card">
-<div class="img-placeholder" style="height:60px;margin-bottom:12px;">Apple logo</div>
-<div class="info-card-title">Apple</div>
-<div class="info-card-body">Drops iOS support after 5–6 years — cuts off security updates regardless of device condition</div>
-</div>
-<div class="info-card">
-<div class="img-placeholder" style="height:60px;margin-bottom:12px;">Google logo</div>
-<div class="info-card-title">Google</div>
-<div class="info-card-body">Android security updates end after 3 years — leaving millions of devices unpatched and effectively obsolete</div>
-</div>
+<div class="pull-quote-text">&ldquo;Had Plaintiffs been informed by Apple that a simple battery replacement would have improved the performance of their iPhones, Plaintiffs would have chosen to replace their batteries — clearly a more cost-effective method rather than upgrading to a new iPhone.&rdquo;</div>
+<div class="pull-quote-attr"> Class action complaint, Eastern District of New York (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune</a>)</div>
 </div>
 </div>
 </div>
@@ -1209,7 +1202,7 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot green"></span>
 </div>
 <div class="slide-content">
-<div class="divider-title" style="font-size:48px;line-height:1.2;">"So if companies are actively moving the baseline — why isn't anyone pushing back?"</div>
+<div class="divider-title" style="font-size:48px;line-height:1.2;">"So if companies are actively moving the baseline, why isn't anyone pushing back?"</div>
 </div>
 </div>
 <!-- Slide 14: Divider, Why Nobody Notices -->
@@ -1236,14 +1229,10 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <div class="slide-content">
 <h3 class="slide-headline">Each generation accepts their reality as normal</h3>
 <div class="pull-quote">
-<div class="pull-quote-text">"Each generation takes the sea level it was born into as the baseline."</div>
-<div class="pull-quote-attr">— Daniel Pauly, shifting baselines theory</div>
+<div class="pull-quote-text">"Each generation of fisheries scientists accepts as a baseline the stock situation that occurred at the beginning of their careers, and uses this to evaluate changes."</div>
+<div class="pull-quote-attr">— Daniel Pauly, shifting baselines theory (<a href="https://doi.org/10.1016/S0169-5347(00)89171-5" target="_blank" style="color:var(--accent);">Pauly, 1995</a>)</div>
 </div>
-<div class="badge-row">
-<div class="badge">NO REFERENCE POINT</div>
-<div class="badge">NO COMPARISON</div>
-<div class="badge">NO PUSHBACK</div>
-</div>
+
 </div>
 </div>
 <!-- Slide 16: Suzuki's Three Mechanisms -->
@@ -1254,27 +1243,24 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot green"></span>
 <span class="window-title">suzuki's three mechanisms</span>
 </div>
-<div class="slide-content">
-<h3 class="slide-headline">Why the baseline shifts without resistance</h3>
-<div class="pull-quote" style="margin-bottom:14px;">
+<div class="slide-content" style="justify-content:center;gap:20px;">
+<h3 class="slide-headline" style="margin-bottom:0;">Why the baseline shifts without resistance</h3>
+<div class="pull-quote" style="margin:0;">
 <div class="pull-quote-text">&ldquo;Shifting baseline syndrome is increasingly recognized as a significant barrier to implementing policies and actions that could address some of today&apos;s environmental challenges, because we misinterpret the scale and impact of change over time.&rdquo;</div>
-<div class="pull-quote-attr">&mdash; Suzuki Foundation (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
+<div class="pull-quote-attr"> Suzuki Foundation (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
 </div>
-<div class="three-cards" style="flex:1;">
-<div class="info-card">
-<div class="info-card-num">01</div>
+<div class="three-cards" style="flex:0;">
+<div class="info-card" style="padding:14px 16px;">
 <div class="info-card-title">No access to old data</div>
-<div class="info-card-body">&ldquo;Lack of awareness or difficulties in accessing historical environmental data.&rdquo; &mdash; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
+<div class="info-card-body">&ldquo;Lack of awareness or difficulties in accessing historical environmental data.&rdquo; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
 </div>
-<div class="info-card">
-<div class="info-card-num">02</div>
+<div class="info-card" style="padding:14px 16px;">
 <div class="info-card-title">No historical knowledge</div>
-<div class="info-card-body">&ldquo;Lack of familiarity and knowledge of natural history.&rdquo; &mdash; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
+<div class="info-card-body">&ldquo;Lack of familiarity and knowledge of natural history.&rdquo; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
 </div>
-<div class="info-card">
-<div class="info-card-num">03</div>
+<div class="info-card" style="padding:14px 16px;">
 <div class="info-card-title">Not enough time</div>
-<div class="info-card-body">&ldquo;Declining interactions between people and the environment.&rdquo; &mdash; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
+<div class="info-card-body">&ldquo;Declining interactions between people and the environment.&rdquo; Suzuki (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">davidsuzuki.org</a>)</div>
 </div>
 </div>
 </div>
@@ -1285,7 +1271,7 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">interactive baseline — drag the slider</span>
+<span class="window-title">interactive baseline. drag the slider</span>
 </div>
 <div class="slide-content" style="justify-content:flex-start;padding-top:8px;">
 <div class="year-display" id="yearDisplay">1971</div>
@@ -1310,6 +1296,10 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <div class="bl-val" id="cpuVal">1 MHz</div>
 </div>
 </div>
+<div style="font-size:11px;color:var(--text3);margin-top:10px;line-height:1.8;">
+Device lifespans: (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);">iFixit</a>) &nbsp;&middot;&nbsp; CPU speeds: (<a href="https://ischoolonline.berkeley.edu/blog/moores-law-processing-power/" target="_blank" style="color:var(--accent);">Berkeley</a>) &nbsp;&middot;&nbsp; Storage/RAM data: (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--text3);">Computer History Museum</a>) &nbsp;&middot;&nbsp; Replacement cycles: (<a href="https://sobrii.io/blog/computer-lifespan-real-numbers-2026" target="_blank" style="color:var(--accent);">Gartner via Sobrii</a>)
+</div>
+</div>
 </div>
 <!-- Slide 18: Power Imbalance Cycle -->
 <div class="slide">
@@ -1323,16 +1313,14 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <h3 class="slide-headline" style="margin-bottom:12px;">The loop that sustains it</h3>
 <div style="display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:1fr auto 1fr;gap:0;flex:1;align-items:center;">
 <div style="background:var(--accent3);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
-<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);line-height:1;">01</div>
-<div style="font-size:13px;font-weight:700;color:var(--text);">Industry sets the baseline</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.5;">&ldquo;Software expands to fill the available memory.&rdquo; &mdash; Wirth (<a href="https://deviq.com/laws/wirths-law/" target="_blank" style="color:var(--accent);">DevIQ</a>)</div>
+<div style="font-size:16px;font-weight:700;color:var(--text);text-align:center;">Industry sets the baseline</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.5;">&ldquo;Software expands to fill the available memory.&rdquo; Parkinson&rsquo;s Law applied to software (<a href="https://deviq.com/laws/wirths-law/" target="_blank" style="color:var(--accent);">DevIQ</a>)</div>
 </div>
 <div style="display:flex;align-items:center;justify-content:center;padding:0 8px;">
 <svg width="48" height="24" viewBox="0 0 48 24"><path d="M4 12 H40 M32 4 L40 12 L32 20" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 <div style="background:var(--accent3);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
-<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);line-height:1;">02</div>
-<div style="font-size:13px;font-weight:700;color:var(--text);">Consumers accept it</div>
+<div style="font-size:16px;font-weight:700;color:var(--text);text-align:center;">Consumers accept it</div>
 <div style="font-size:11px;color:var(--text2);line-height:1.5;">&ldquo;Studies have shown that older generations more readily recall accurate past conditions.&rdquo; (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">Suzuki</a>)</div>
 </div>
 <div style="display:flex;align-items:center;justify-content:center;padding:8px 0;">
@@ -1345,16 +1333,14 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <svg width="24" height="48" viewBox="0 0 24 48"><path d="M12 4 V40 M4 32 L12 40 L20 32" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 <div style="background:var(--accent3);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
-<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);line-height:1;">04</div>
-<div style="font-size:13px;font-weight:700;color:var(--text);">Baseline moves again</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.5;">&ldquo;Software is getting slower more rapidly than hardware becomes faster.&rdquo; (<a href="https://deviq.com/laws/wirths-law/" target="_blank" style="color:var(--accent);">Wirth &mdash; DevIQ</a>)</div>
+<div style="font-size:16px;font-weight:700;color:var(--text);text-align:center;">Baseline moves again</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.5;">&ldquo;Software is getting slower more rapidly than hardware becomes faster.&rdquo; (<a href="https://deviq.com/laws/wirths-law/" target="_blank" style="color:var(--accent);">Wirth. DevIQ</a>)</div>
 </div>
 <div style="display:flex;align-items:center;justify-content:center;padding:0 8px;">
 <svg width="48" height="24" viewBox="0 0 48 24"><path d="M44 12 H8 M16 4 L8 12 L16 20" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 <div style="background:var(--accent3);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
-<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);line-height:1;">03</div>
-<div style="font-size:13px;font-weight:700;color:var(--text);">Industry profits</div>
+<div style="font-size:16px;font-weight:700;color:var(--text);text-align:center;">Industry profits</div>
 <div style="font-size:11px;color:var(--text2);line-height:1.5;">Apple&apos;s $500M Batterygate settlement: consumers didn&apos;t know a $29 battery replacement was all they needed. (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune, 2017</a>)</div>
 </div>
 </div>
@@ -1370,68 +1356,152 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <div class="slide-content">
 <div class="divider-num">ACT 4</div>
 <div class="divider-title">THE<br/>CONSEQUENCES</div>
-<div class="divider-sub">Economic. Environmental. Political. Social.</div>
+<div class="divider-sub">Economic. The Toll on the Earth. Political. Social.</div>
 </div>
 </div>
-<!-- Slide 20: For vs Against -->
+<!-- Consequence Divider: Corporate Control -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content" style="justify-content:center;align-items:flex-start;padding:0 56px;gap:16px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.18em;color:var(--accent2);margin-bottom:4px;">CONSEQUENCE 01</div>
+<div style="font-family:'DM Serif Display',serif;font-size:52px;line-height:1.1;color:#fdfaf4;">Corporate Control<br/>Over Users</div>
+
+</div>
+</div>
+<!-- Slide: Corporate Control 1. Then vs Now -->
 <div class="slide">
 <div class="window-bar">
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">the debate</span>
+<span class="window-title">consequence 01. then vs now</span>
 </div>
 <div class="slide-content">
-<h3 class="slide-headline">The debate</h3>
-<div class="two-col">
-<div class="col-box col-box-sage">
-<div class="col-box-label">The case for rapid advancement</div>
+
+<div style="display:flex;gap:0;flex:1;align-items:stretch;">
+<div class="col-box col-box-sage" style="flex:1;border-radius:8px 0 0 8px;border-right:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Then. 1981 to ~2000</div>
 <ul class="col-list">
-<li>You get more for your money than ever. A $400 laptop today does what a $3,000 machine from 2000 couldn&apos;t. (<a href="https://www.hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/" target="_blank" style="color:var(--sage);">Morrow</a>)</li>
-<li>Devices now last longer on a charge &mdash; power efficiency improved dramatically alongside speed.</li>
-<li>Computing was genuinely democratized. Things that required expensive specialists are now free and instant.</li>
+<li>An IBM PC ran the same software for 10+ years with zero performance degradation (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--sage);">Computer History Museum</a>)</li>
+<li>Obsolescence was physical. The hardware literally wore out or became too slow for new tasks</li>
+<li>No software update could make a working machine slower</li>
+<li>Average device lifespan: 7&ndash;10 years (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--sage);">iFixit</a>)</li>
 </ul>
 </div>
-<div class="col-box col-box-accent">
-<div class="col-box-label">The case against rapid advancement</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 14px;background:var(--bg-bar);flex-shrink:0;">
+<svg width="32" height="32" viewBox="0 0 32 32"><path d="M4 16 H28 M20 8 L28 16 L20 24" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div class="col-box col-box-accent" style="flex:1;border-radius:0 8px 8px 0;border-left:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Now. 2010 to present</div>
 <ul class="col-list">
-<li>The era of automatic improvement is ending &mdash; but upgrade pressure isn&apos;t. &ldquo;The golden age of more rapidly cheapening transistors did not survive unchallenged past the new millennium.&rdquo; (<a href="https://www.nber.org/system/files/working_papers/w24553/w24553.pdf" target="_blank" style="color:var(--accent);">Flamm, NBER</a>)</li>
-<li>Software intentionally absorbs every hardware gain. Your new device feels as slow as your old one within two years. (<a href="https://deviq.com/laws/wirths-law/" target="_blank" style="color:var(--accent);">Wirth&apos;s Law &mdash; DevIQ</a>)</li>
-<li>Consumers have no baseline to push back from. They accept whatever the industry says they need. (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">Suzuki</a>)</li>
+<li>A working iPhone was deliberately slowed via software update. Apple admitted it, settled for $500M (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune</a>)</li>
+<li>Obsolescence is engineered. Support windows are 3&ndash;5 years by design, not by physics (<a href="https://sobrii.io/blog/computer-lifespan-real-numbers-2026" target="_blank" style="color:var(--accent);">Gartner via Sobrii</a>)</li>
+<li>Average device lifespan today: 3&ndash;4 years (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);">iFixit</a>)</li>
+<li>The device still works. The company decided otherwise. (<a href="https://fortune.com/2017/12/28/apple-iphone-battery-apology" target="_blank" style="color:var(--accent);">Fortune</a>)</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<!-- Slide 21: Economic -->
+<!-- Slide: Corporate Control 2. Who controls the baseline -->
 <div class="slide">
 <div class="window-bar">
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">consequence 01 — economic</span>
+<span class="window-title">consequence 01. who decides</span>
 </div>
 <div class="slide-content">
-<h3 class="slide-headline">Consequence 01 &mdash; Economic</h3>
+<div class="three-cards" style="flex:1;">
+<div class="info-card" style="padding:0;overflow:hidden;justify-content:flex-end;">
+<div style="flex:1;background:#fff;display:flex;align-items:center;justify-content:center;">
+<img src="assets/microsoft.png" style="max-width:80%;max-height:80%;object-fit:contain;">
+</div>
+<div style="padding:14px 16px;border-top:1px solid var(--border);">
+<div class="info-card-body" style="text-align:center;">Ending Windows 10 support October 2025, forcing hardware replacement for hundreds of millions of PCs that still run perfectly. (<a href="https://support.microsoft.com/en-us/windows/windows-10-support-has-ended-on-october-14-2025-2ca8b313-1946-43d3-b55c-2b95b107f281" target="_blank" style="color:var(--accent);">Microsoft</a>)</div>
+</div>
+</div>
+<div class="info-card" style="padding:0;overflow:hidden;justify-content:flex-end;">
+<div style="flex:1;background:#fff;display:flex;align-items:center;justify-content:center;">
+<img src="assets/apple.png" style="max-width:80%;max-height:80%;object-fit:contain;">
+</div>
+<div style="padding:14px 16px;border-top:1px solid var(--border);">
+<div class="info-card-body" style="text-align:center;">Drops iOS support after 5&ndash;6 years. A 2018 iPhone in perfect condition gets no security updates in 2024, making it functionally unusable for banking apps, payments, and secure login. (<a href="https://www.macworld.com/article/675021/how-long-does-apple-support-iphones.html" target="_blank" style="color:var(--accent);">Macworld</a>)</div>
+</div>
+</div>
+<div class="info-card" style="padding:0;overflow:hidden;justify-content:flex-end;">
+<div style="flex:1;background:#fff;display:flex;align-items:center;justify-content:center;">
+<img src="assets/google.jpg" style="max-width:80%;max-height:80%;object-fit:contain;">
+</div>
+<div style="padding:14px 16px;border-top:1px solid var(--border);">
+<div class="info-card-body" style="text-align:center;">Android security updates end after 3 years. Chromebook auto-update expiry: 6&ndash;8 years from manufacture. A school district's 2019 Chromebooks were unsupported by 2024. (<a href="https://support.google.com/chrome/a/answer/6220366" target="_blank" style="color:var(--accent);">Google</a>)</div>
+</div>
+</div>
+</div>
+<div style="font-size:11px;color:var(--text3);text-align:center;margin-top:6px;">Logos: Microsoft (<a href="https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg" target="_blank" style="color:var(--accent);">Wikimedia Commons</a>) &middot; Apple (<a href="https://commons.wikimedia.org/wiki/File:Apple_logo_black.svg" target="_blank" style="color:var(--accent);">Wikimedia Commons</a>) &middot; Google (<a href="https://en.wikipedia.org/wiki/Google_logo" target="_blank" style="color:var(--accent);">Wikipedia</a>)</div>
+</div>
+</div>
+<!-- Slide: Corporate Control 3. Reliability then vs now -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 01. reliability then vs now</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:0;flex:1;align-items:stretch;">
+<div class="col-box col-box-sage" style="flex:1;border-radius:8px 0 0 8px;border-right:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Then. 1980s to 1990s</div>
+<ul class="col-list">
+<li>A PC bought in 1984 ran the same software in 1994 without degradation (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--sage);">Computer History Museum</a>)</li>
+<li>Hardware was over-engineered. Built to outlast the software it ran</li>
+<li>IBM PC keyboards were rated for over 100 million keystrokes per key (<a href="https://americanhistory.si.edu/collections/object/nmah_1323285" target="_blank" style="color:var(--sage);">Smithsonian</a>)</li>
+<li>Repair was expected, documented, and supported by manufacturers</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 12px;background:var(--bg-bar);">
+<svg width="32" height="32" viewBox="0 0 32 32"><path d="M4 16 H28 M20 8 L28 16 L20 24" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div class="col-box col-box-accent" style="flex:1;border-radius:0 8px 8px 0;border-left:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Now. 2010s to present</div>
+<ul class="col-list">
+<li>MacBook butterfly keyboards (2015&ndash;2019) were so failure-prone Apple faced a $50M class action and abandoned the design (<a href="https://www.macrumors.com/2021/03/22/apple-butterfly-keyboard-lawsuit-class-action/" target="_blank" style="color:var(--accent);">MacRumors</a>)</li>
+<li>Devices are deliberately under-engineered for longevity to drive replacement cycles (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);">iFixit</a>)</li>
+<li>iFixit repairability score: iPhone 14 = 4/10. iPhone 15 = 7/10. (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);">iFixit</a>)</li>
+<li>Repair is restricted, undocumented, and voided by warranty (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide: Corporate Control 4. The stat -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 01. the lifespan gap</span>
+</div>
+<div class="slide-content">
+
 <div style="display:flex;gap:20px;flex:1;align-items:stretch;">
-<div style="flex:1;display:flex;flex-direction:column;gap:16px;">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;justify-content:center;">
 <div class="big-stat">
-<div class="big-stat-num">3&ndash;4 yrs</div>
-<div class="big-stat-label">Average device lifespan today &mdash; down from 7&ndash;10 years in 1993 (<a href="https://www.ifixit.com/News/58877/electronics-lifespan" target="_blank" style="color:var(--accent);">iFixit</a>)</div>
+<div class="big-stat-num">10 yrs → 3 yrs</div>
+<div class="big-stat-label">Average device lifespan: 1985 baseline vs. 2024 baseline. The device didn&apos;t get worse. The definition of &ldquo;current&rdquo; got shorter. (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);">iFixit</a>)</div>
 </div>
 <div class="big-stat">
-<div class="big-stat-num">$1,200+</div>
-<div class="big-stat-label">Spent per year by US consumers on consumer electronics (<a href="https://www.statista.com/statistics/276027/us-consumer-electronics-spending/" target="_blank" style="color:var(--accent);">Statista</a>)</div>
+<div class="big-stat-num">$512B</div>
+<div class="big-stat-label">US consumer technology industry revenue in 2024. Up $14 billion from 2023. (<a href="https://www.cta.tech/press-releases/consumer-technology-association-forecast-us-tech-industry-revenue-to-rise-28-in-2024" target="_blank" style="color:var(--accent);">Consumer Technology Association</a>)</div>
 </div>
 </div>
-<div style="flex:1;display:flex;flex-direction:column;gap:8px;">
-<div style="background:var(--bg-bar);border:2px dashed var(--border);border-radius:4px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;">
-<div style="font-size:11px;font-weight:700;letter-spacing:0.07em;color:var(--accent);text-transform:uppercase;">Add image here</div>
-<div style="font-size:12px;color:var(--text2);line-height:1.6;">Screenshot the US consumer electronics spending over time bar chart from Statista, showing annual spending growth from the 2000s to today.<br><br>URL: <a href="https://www.statista.com/statistics/276027/us-consumer-electronics-spending/" target="_blank" style="color:var(--accent);">statista.com/statistics/276027/us-consumer-electronics-spending/</a></div>
-<div style="font-size:10px;color:var(--text3);font-family:'Courier New',monospace;">Save as: images/consumer-spending.png</div>
-</div>
-<div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://www.statista.com/statistics/276027/us-consumer-electronics-spending/" target="_blank" style="color:var(--accent);">Statista</a>)</div>
-</div>
+
 </div>
 </div>
 </div>
@@ -1441,133 +1511,459 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">price paradox — nominal vs adjusted</span>
+<span class="window-title">price paradox. nominal vs adjusted</span>
 </div>
 <div class="slide-content" style="gap:10px;">
-<h3 class="slide-headline" style="margin-bottom:4px;">But isn&apos;t it getting cheaper?</h3>
-<div class="chart-container" style="height:260px;margin-top:0;flex-shrink:0;">
+
+<div style="font-size:11px;color:var(--text3);margin-bottom:4px;">Data: (<a href="https://www.hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/" target="_blank" style="color:var(--accent);">Morrow, HDT Project</a>) — GPU prices adjusted for inflation, 1998&ndash;2023</div>
+<div class="chart-container" style="height:240px;margin-top:0;flex-shrink:0;">
 <svg height="100%" id="price-chart" width="100%"></svg>
 </div>
 <div style="font-size:12px;color:var(--text2);line-height:1.5;padding:8px 12px;background:var(--accent3);border-left:3px solid var(--accent);border-radius:0 4px 4px 0;">&ldquo;Today&apos;s mid-range GPUs equate to high-end GPUs from previous eras, providing similar or superior performance at a more accessible price point. A $299 card from 1998 costs $566 adjusted today.&rdquo; (<a href="https://www.hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/" target="_blank" style="color:var(--accent);">Morrow</a>)</div>
 </div>
 </div>
-<!-- Slide 23: Environmental -->
+<!-- Consequence Divider: The Toll on the Earth -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content" style="justify-content:space-evenly;align-items:flex-start;padding:40px 56px;gap:0;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.18em;color:var(--accent2);">CONSEQUENCE 02</div>
+<div style="font-family:'DM Serif Display',serif;font-size:64px;line-height:1.05;color:#fdfaf4;">The Toll<br/>on the Earth</div>
+
+<div style="display:flex;gap:48px;">
+<div style="text-align:left;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--accent2);line-height:1;">53.6M</div>
+<div style="font-size:13px;color:rgba(253,250,244,0.5);max-width:180px;line-height:1.5;">tons of e-waste generated globally in 2019 (<a href="https://ewastemonitor.info/gem-2020/" target="_blank" style="color:var(--accent);">UNEP</a>)</div>
+</div>
+<div style="text-align:left;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--accent2);line-height:1;">17.4%</div>
+<div style="font-size:13px;color:rgba(253,250,244,0.5);max-width:180px;line-height:1.5;">formally recycled. 82.6% not formally collected or recycled (<a href="https://ewastemonitor.info/gem-2020/" target="_blank" style="color:var(--accent);">UNEP</a>)</div>
+</div>
+<div style="text-align:left;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--accent2);line-height:1;">$57B</div>
+<div style="font-size:13px;color:rgba(253,250,244,0.5);max-width:180px;line-height:1.5;">in recoverable materials lost every year (<a href="https://ewastemonitor.info/gem-2020/" target="_blank" style="color:var(--accent);">UNEP</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide: The Toll on the Earth 1. Then vs Now -->
 <div class="slide">
 <div class="window-bar">
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">consequence 02 — environmental</span>
+<span class="window-title">consequence 02. then vs now</span>
 </div>
 <div class="slide-content">
-<h3 class="slide-headline">Consequence 02 — Environmental</h3>
-<div class="three-stat-row">
-<div class="big-stat">
-<div class="big-stat-num">6.9M</div>
-<div class="big-stat-label">Tons of US e-waste generated per year</div>
+
+<div style="display:flex;gap:0;flex:1;align-items:stretch;">
+<div class="col-box col-box-sage" style="flex:1;border-radius:8px 0 0 8px;border-right:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Then. pre-2000</div>
+<ul class="col-list">
+<li>An IBM PC purchased in 1981 was still in active office use in 1991 (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--sage);">Computer History Museum</a>)</li>
+<li>Obsolescence was physical. The hardware genuinely wore out (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--sage);">iFixit</a>)</li>
+<li>A household might own one computer across an entire decade (<a href="https://www.computerhistory.org/timeline/computers/" target="_blank" style="color:var(--sage);">Computer History Museum</a>)</li>
+<li>E-waste wasn&apos;t a category. Not enough volume to matter (<a href="https://ewastemonitor.info/gem-2020/" target="_blank" style="color:var(--accent);">UNEP</a>)</li>
+</ul>
 </div>
-<div class="big-stat">
-<div class="big-stat-num">17%</div>
-<div class="big-stat-label">Of global e-waste formally recycled</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 14px;background:var(--bg-bar);flex-shrink:0;">
+<svg width="32" height="32" viewBox="0 0 32 32"><path d="M4 16 H28 M20 8 L28 16 L20 24" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
-<div class="big-stat">
-<div class="big-stat-num">0</div>
-<div class="big-stat-label">Federal e-waste recycling laws in the US</div>
+<div class="col-box col-box-accent" style="flex:1;border-radius:0 8px 8px 0;border-left:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Now. 2010 to present</div>
+<ul class="col-list">
+<li>Average device lifespan: 3&ndash;4 years before forced obsolescence (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);">iFixit</a>)</li>
+<li>53.6 million tons of e-waste globally in 2019. A record at the time (<a href="https://ewastemonitor.info/gem-2020/" target="_blank" style="color:var(--accent);">UNEP</a>)</li>
+<li>Only 17.4% formally recycled. 82.6% dumped, burned, or illegally exported (<a href="https://ewastemonitor.info/gem-2020/" target="_blank" style="color:var(--accent);">UNEP</a>)</li>
+</ul>
 </div>
 </div>
-<div class="img-placeholder" style="margin-top:16px;height:120px;">e-waste pile image</div>
 </div>
 </div>
-<!-- Slide 24: Political -->
+<!-- Slide: The Toll on the Earth 2. Where It Goes -->
 <div class="slide">
 <div class="window-bar">
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">consequence 03 — political</span>
+<span class="window-title">consequence 02. where it goes</span>
 </div>
 <div class="slide-content">
-<h3 class="slide-headline">Consequence 03 — Political</h3>
-<div class="three-cards">
-<div class="info-card">
-<div class="img-placeholder" style="height:50px;margin-bottom:10px;">EU flag</div>
-<div class="info-card-title">EU Right to Repair</div>
-<div class="info-card-body">March 2024 — spare parts and repair manuals required for 10 years after sale</div>
+
+<div style="display:flex;gap:20px;flex:1;">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;justify-content:center;">
+<div class="pull-quote" style="margin:0;">
+<div class="pull-quote-text">&ldquo;The fate of 82.6% (44.3 Mt) of e-waste generated globally in 2019 was most likely not formally collected and recycled in an environmentally sound way.&rdquo;</div>
+<div class="pull-quote-attr"> UNEP, <em>Global E-waste Monitor 2020</em> (<a href="https://ewastemonitor.info/gem-2020/" target="_blank" style="color:var(--accent);">UNEP</a>)</div>
 </div>
-<div class="info-card">
-<div class="img-placeholder" style="height:50px;margin-bottom:10px;">France flag</div>
-<div class="info-card-title">France</div>
-<div class="info-card-body">Repairability score mandatory on all electronics since 2021 — first in the world</div>
+<div class="two-col" style="gap:10px;flex:0;">
+<div class="big-stat">
+<div class="big-stat-num">~40%</div>
+<div class="big-stat-label">Of US e-waste delivered to recyclers was exported rather than recycled domestically (<a href="https://www.ban.org/trash-transparency" target="_blank" style="color:var(--accent);">Basel Action Network</a>)</div>
 </div>
-<div class="info-card">
-<div class="img-placeholder" style="height:50px;margin-bottom:10px;">FTC logo</div>
-<div class="info-card-title">US FTC</div>
-<div class="info-card-body">2021 right to repair report called manufacturer restrictions anticompetitive</div>
-</div>
+<div class="big-stat">
+<div class="big-stat-num">Agbogbloshie</div>
+<div class="big-stat-label">Ghana. One of the world&apos;s largest e-waste sites, processing discarded electronics from the US and Europe (<a href="https://www.ban.org/trash-transparency" target="_blank" style="color:var(--accent);">Basel Action Network</a>)</div>
 </div>
 </div>
 </div>
-<!-- Slide 25: Social Part 1 -->
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+<img src="assets/e-waste.webp" style="width:100%;flex:1;border-radius:4px;object-fit:cover;min-height:0;">
+<div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://www.npr.org/sections/goats-and-soda/2024/10/05/g-s1-6411/electronics-public-health-waste-ghana-phones-computers" target="_blank" style="color:var(--accent);">NPR — "Old Electronics Are Poisoning Communities In Ghana. The Solution May Be Regulation," 2024</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide: The Toll on the Earth 3. Carbon Cost -->
 <div class="slide">
 <div class="window-bar">
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">consequence 04 — social: the gap</span>
+<span class="window-title">consequence 02. the carbon cost</span>
 </div>
 <div class="slide-content">
-<h3 class="slide-headline">Consequence 04 &mdash; Social: The Gap</h3>
+
 <div style="display:flex;gap:20px;flex:1;align-items:stretch;">
-<div style="flex:1;display:flex;flex-direction:column;gap:12px;">
-<div class="big-stat">
-<div class="big-stat-num">92% vs 76%</div>
-<div class="big-stat-label">High vs low income students with laptops at home (<a href="https://www.commonsensemedia.org/sites/default/files/research/report/2020_report_the-common-sense-census-inside-the-21st-century-classroom.pdf" target="_blank" style="color:var(--accent);">Common Sense Media</a>)</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;justify-content:center;">
+<div class="pull-quote" style="margin:0;">
+<div class="pull-quote-text">&ldquo;The manufacture of a new laptop generates an average of 331 kg of CO&#x2082; equivalent &mdash; before it&rsquo;s ever turned on.&rdquo;</div>
+<div class="pull-quote-attr"> Circular Computing (<a href="https://circularcomputing.com/news/carbon-footprint-laptop/" target="_blank" style="color:var(--accent);">circularcomputing.com</a>)</div>
 </div>
 <div class="big-stat">
-<div class="big-stat-num">1 in 3</div>
-<div class="big-stat-label">Black, Latino, and Native American households with no computing device (<a href="https://www.census.gov/library/stories/2021/08/improving-access-to-digital-technology.html" target="_blank" style="color:var(--accent);">US Census</a>)</div>
+<div class="big-stat-num">75&ndash;85%</div>
+<div class="big-stat-label">Of a device&apos;s total lifetime carbon footprint is generated during manufacturing. Before it&apos;s ever turned on. (<a href="https://circularcomputing.com/news/carbon-footprint-laptop/" target="_blank" style="color:var(--accent);">Circular Computing</a>)</div>
+</div>
+</div>
+<div style="flex:1;padding:20px;background:var(--accent3);border-radius:8px;border:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;gap:12px;">
+<div style="font-size:13px;font-weight:700;color:var(--text);">The baseline shift made this exponentially worse.</div>
+<div style="font-size:13px;color:var(--text2);line-height:1.7;">Then: 1 laptop manufactured per household per decade = ~35kg CO&#x2082;/year from manufacturing. (<a href="https://circularcomputing.com/news/carbon-footprint-laptop/" target="_blank" style="color:var(--accent);">Circular Computing</a>)</div>
+<div style="font-size:13px;color:var(--text2);line-height:1.7;">Now: 1 laptop every 3&ndash;4 years = ~90&ndash;130kg CO&#x2082;/year from manufacturing alone. (<a href="https://circularcomputing.com/news/carbon-footprint-laptop/" target="_blank" style="color:var(--accent);">Circular Computing</a>, <a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);">iFixit</a>)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide: The Toll on the Earth 4. No Law -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 02. no federal law</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:0;flex:1;align-items:stretch;">
+<div class="col-box col-box-sage" style="flex:1;border-radius:8px 0 0 8px;border-right:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Then. when e-waste was minimal</div>
+<ul class="col-list">
+<li>At the old baseline pace, e-waste volume was low enough that no federal law was needed (<a href="https://ewastemonitor.info/gem-2020/" target="_blank" style="color:var(--accent);">UNEP</a>)</li>
+<li>The EU ratified the Basel Convention banning e-waste exports in 1989 (<a href="https://www.ban.org/trash-transparency" target="_blank" style="color:var(--sage);">Basel Action Network</a>)</li>
+<li>The problem was small enough to be invisible to US legislators (<a href="https://www.epa.gov/smm-electronics" target="_blank" style="color:var(--sage);">EPA</a>)</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 14px;background:var(--bg-bar);flex-shrink:0;">
+<svg width="32" height="32" viewBox="0 0 32 32"><path d="M4 16 H28 M20 8 L28 16 L20 24" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div class="col-box col-box-accent" style="flex:1;border-radius:0 8px 8px 0;border-left:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Now. at the new baseline pace</div>
+<ul class="col-list">
+<li>6.9M tons of e-waste generated in the US per year (<a href="https://www.epa.gov/smm-electronics" target="_blank" style="color:var(--accent);">EPA</a>)</li>
+<li>0 federal e-waste recycling laws. The US never ratified the Basel Convention (<a href="https://www.epa.gov/smm-electronics" target="_blank" style="color:var(--accent);">EPA</a>)</li>
+<li>25 states have no e-waste law at all (<a href="https://www.epa.gov/electronics-batteries-management/regulations-electronics-stewardship" target="_blank" style="color:var(--accent);">EPA</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Consequence Divider: Political -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content" style="justify-content:center;align-items:flex-start;padding:0 56px;gap:16px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.18em;color:var(--accent2);margin-bottom:4px;">CONSEQUENCE 03</div>
+<div style="font-family:'DM Serif Display',serif;font-size:52px;line-height:1.1;color:#fdfaf4;">Policy<br/>Can&apos;t Keep Up</div>
+
+</div>
+</div>
+<!-- Slide: Political 1. Then vs Now -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 03. then vs now</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:0;flex:1;align-items:stretch;">
+<div class="col-box col-box-sage" style="flex:1;border-radius:8px 0 0 8px;border-right:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Then. 1980s baseline</div>
+<ul class="col-list">
+<li>CFAA (1986) written for its time. Mainframes, early networks. Legislators understood what they were regulating. (<a href="https://www.eff.org/issues/right-to-repair" target="_blank" style="color:var(--accent);">EFF</a>)</li>
+<li>Consumer electronics covered by product liability laws as durable goods with expected lifespans (<a href="https://www.ifixit.com/News/7098/planned-obsolescence" target="_blank" style="color:var(--accent);">iFixit</a>)</li>
+<li>Repair was legal, expected, and supported by manufacturers (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 14px;background:var(--bg-bar);flex-shrink:0;">
+<svg width="32" height="32" viewBox="0 0 32 32"><path d="M4 16 H28 M20 8 L28 16 L20 24" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div class="col-box col-box-accent" style="flex:1;border-radius:0 8px 8px 0;border-left:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Now. 2025 baseline</div>
+<ul class="col-list">
+<li>CFAA still the primary US computer law (<a href="https://www.eff.org/issues/right-to-repair" target="_blank" style="color:var(--accent);">EFF</a>)</li>
+<li>No federal right to repair, no e-waste law, no software transparency requirement (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>Digital rights law consistently lags behind technology — often by a decade or more. (<a href="https://www.eff.org/issues/right-to-repair" target="_blank" style="color:var(--accent);">EFF</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide: Political 2. Right to Repair -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 03. right to repair</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:0;flex:1;align-items:stretch;">
+<div class="col-box col-box-sage" style="flex:1;border-radius:8px 0 0 8px;border-right:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Then</div>
+<ul class="col-list">
+<li>Any device to any repair shop. No restriction (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>Parts standardized and available indefinitely (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>Repair manuals published and public (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>A repaired device legally identical to an unrepaired one (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 14px;background:var(--bg-bar);flex-shrink:0;">
+<svg width="32" height="32" viewBox="0 0 32 32"><path d="M4 16 H28 M20 8 L28 16 L20 24" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div class="col-box col-box-accent" style="flex:1;border-radius:0 8px 8px 0;border-left:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Now</div>
+<ul class="col-list">
+<li>Proprietary screws, glue, software-paired parts block repair (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>FTC: &ldquo;scant evidence to support manufacturers&apos; justifications&rdquo; (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>EU Right to Repair Directive passed 2024. US has nothing equivalent (<a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_21_5642" target="_blank" style="color:var(--accent);">EU Commission</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide: Political 3. ACP -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 03. government access programs</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:20px;flex:1;align-items:stretch;">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;justify-content:center;">
+<div class="big-stat">
+<div class="big-stat-num">23M</div>
+<div class="big-stat-label">Households that lost the Affordable Connectivity Program subsidy when Congress failed to renew it in June 2024 (<a href="https://www.fcc.gov/affordable-connectivity-program" target="_blank" style="color:var(--accent);">FCC</a>)</div>
 </div>
 <div class="big-stat">
-<div class="big-stat-num">54% vs 87%</div>
-<div class="big-stat-label">Low vs upper income Americans with broadband access (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</div>
+<div class="big-stat-num">77%</div>
+<div class="big-stat-label">Of ACP recipients said losing it would force them to drop service or change to a slower plan (<a href="https://www.fcc.gov/affordable-connectivity-program" target="_blank" style="color:var(--accent);">FCC survey</a>)</div>
 </div>
 </div>
-<div style="flex:1;display:flex;flex-direction:column;gap:8px;">
-<div style="background:var(--bg-bar);border:2px dashed var(--border);border-radius:4px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;">
-<div style="font-size:11px;font-weight:700;letter-spacing:0.07em;color:var(--accent);text-transform:uppercase;">Add image here</div>
-<div style="font-size:12px;color:var(--text2);line-height:1.6;">Screenshot the income vs. broadband access bar chart from the Pew Research 2021 Mobile Technology report &mdash; the chart showing percentage with home broadband by income tier.<br><br>URL: <a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/</a></div>
-<div style="font-size:10px;color:var(--text3);font-family:'Courier New',monospace;">Save as: images/pew-digital-divide.png</div>
+<div style="flex:1;padding:20px;background:var(--accent3);border-radius:8px;border:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;gap:12px;">
+<div style="font-size:13px;font-weight:700;color:var(--text);">At the old baseline, internet access wasn&apos;t a survival need.</div>
+<div style="font-size:13px;color:var(--text2);line-height:1.7;">In 1990, not having internet access was normal. In 2026, not having internet access means no job applications, no healthcare portals, no school assignments, no government services.</div>
 </div>
+</div>
+</div>
+</div>
+<!-- Slide: Political 4. EU vs US -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 03. eu vs us</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:0;flex:1;align-items:stretch;">
+<div class="col-box col-box-sage" style="flex:1;border-radius:8px 0 0 8px;border-right:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">European Union. acknowledged the shift</div>
+<ul class="col-list">
+<li>Right to Repair Directive. 10 years of spare parts, March 2024 (<a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_21_5642" target="_blank" style="color:var(--sage);">EU Commission</a>)</li>
+<li>France: mandatory repairability score on all electronics since 2021 (<a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_21_5642" target="_blank" style="color:var(--accent);">EU Commission</a>)</li>
+<li>Universal USB-C charging law. Forced Apple to drop Lightning (charging cable) in 2023 (<a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_21_5642" target="_blank" style="color:var(--accent);">EU Commission</a>)</li>
+<li>Basel Convention ratified. E-waste exports banned (<a href="https://www.ban.org/trash-transparency" target="_blank" style="color:var(--sage);">Basel Action Network</a>)</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 14px;background:var(--bg-bar);flex-shrink:0;">
+<svg width="32" height="32" viewBox="0 0 32 32"><path d="M4 16 H28 M20 8 L28 16 L20 24" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div class="col-box col-box-accent" style="flex:1;border-radius:0 8px 8px 0;border-left:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">United States. still at the old baseline</div>
+<ul class="col-list">
+<li>No federal right to repair law (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>No federal e-waste law. Basel Convention never ratified (<a href="https://www.epa.gov/smm-electronics" target="_blank" style="color:var(--accent);">EPA</a>)</li>
+<li>No mandatory repairability scoring (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>No universal charger requirement (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC, 2021</a>)</li>
+<li>CFAA still the primary computer law. Written in 1986 (<a href="https://www.eff.org/issues/right-to-repair" target="_blank" style="color:var(--accent);">EFF</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Consequence Divider: Social -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content" style="justify-content:center;align-items:flex-start;padding:0 56px;gap:16px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.18em;color:var(--accent2);margin-bottom:4px;">CONSEQUENCE 04</div>
+<div style="font-family:'DM Serif Display',serif;font-size:52px;line-height:1.1;color:#fdfaf4;">The Gap<br/>Widens</div>
+
+</div>
+</div>
+<!-- Slide: Social 1. Then vs Now: The Opt-Out Penalty -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 04. the opt-out penalty</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:0;flex:1;align-items:stretch;">
+<div class="col-box col-box-sage" style="flex:1;border-radius:8px 0 0 8px;border-right:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Then. 1985 baseline</div>
+<ul class="col-list">
+<li>A business with no computer competed on equal terms. product, service, location (<a href="https://www.uschamber.com/small-business/small-business-index-q1-2026" target="_blank" style="color:var(--accent);">US Chamber of Commerce</a>)</li>
+<li>Job applicants mailed resumes (<a href="https://www.uschamber.com/small-business/small-business-index-q1-2026" target="_blank" style="color:var(--accent);">US Chamber of Commerce</a>)</li>
+<li>Students used the library (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</li>
+<li>Non-participation in technology was a neutral choice (<a href="https://www.uschamber.com/small-business/small-business-index-q1-2026" target="_blank" style="color:var(--accent);">US Chamber of Commerce</a>)</li>
+</ul>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;padding:0 14px;background:var(--bg-bar);flex-shrink:0;">
+<svg width="32" height="32" viewBox="0 0 32 32"><path d="M4 16 H28 M20 8 L28 16 L20 24" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+<div class="col-box col-box-accent" style="flex:1;border-radius:0 8px 8px 0;border-left:none;display:flex;flex-direction:column;justify-content:center;">
+<div class="col-box-label">Now. 2025 baseline</div>
+<ul class="col-list">
+<li>A business without a website, payment system, and social media is invisible (<a href="https://www.uschamber.com/small-business/small-business-index-q1-2026" target="_blank" style="color:var(--accent);">US Chamber of Commerce</a>)</li>
+<li>Most job applications require online account and 24-hour email response (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</li>
+<li>Tests, college apps, and homework are online-only (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</li>
+<li>Non-participation is now a penalty. Even for people who didn't choose to participate (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide: Social 2. Small Business -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 04. small business</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:20px;flex:1;align-items:stretch;">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;justify-content:center;">
+<div style="padding:14px 16px;background:var(--accent3);border-radius:8px;border:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.7;">
+<strong style="color:var(--text);">1990:</strong> A local bookstore competes with other local bookstores. The baseline for competition is inventory, location, and service. (<a href="https://www.uschamber.com/small-business/small-business-index-q1-2026" target="_blank" style="color:var(--accent);">US Chamber of Commerce</a>)
+</div>
+<div style="padding:14px 16px;background:var(--bg-bar);border-radius:8px;border:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.7;">
+<strong style="color:var(--accent);">2025:</strong> That same bookstore now competes with Amazon&apos;s recommendation algorithm, same-day delivery, and a catalog of 300 million items. To survive, it needs a website, an inventory management system, an email list, a social media presence, and an e-commerce platform. (<a href="https://www.uschamber.com/small-business/small-business-index-q1-2026" target="_blank" style="color:var(--accent);">US Chamber of Commerce</a>)
+</div>
+<div style="padding:14px 16px;background:var(--accent3);border-radius:8px;border-left:3px solid var(--accent);font-size:13px;color:var(--text2);line-height:1.7;">
+The baseline for what it means to &ldquo;compete&rdquo; moved. The traditional business owner didn&apos;t opt into that shift. it happened to them. (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;justify-content:center;">
+<div class="big-stat">
+<div class="big-stat-num">67</div>
+<div class="big-stat-label">Q1 2026 Small Business Index score — down from 72.0 at its recent high, as inflation and economic uncertainty weigh on confidence (<a href="https://www.uschamber.com/small-business/small-business-index-q1-2026" target="_blank" style="color:var(--accent);">US Chamber of Commerce</a>)</div>
+</div>
+<div class="big-stat">
+<div class="big-stat-num">$0</div>
+<div class="big-stat-label">Cost to not have a website in 1990. Today, no web presence means near-zero discoverability for most consumer businesses. (<a href="https://www.uschamber.com/small-business/small-business-index-q1-2026" target="_blank" style="color:var(--accent);">US Chamber of Commerce</a>)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide: Social 3. The Digital Divide -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">consequence 04. the digital divide</span>
+</div>
+<div class="slide-content">
+
+<div style="display:flex;gap:20px;flex:1;align-items:stretch;">
+<div style="flex:1;display:flex;flex-direction:column;gap:10px;justify-content:center;">
+<div style="background:var(--accent3);border:1px solid var(--border);border-radius:6px;padding:16px 14px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1.1;">24% vs 5%</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:2px;">Lower-income children without a computer at home, vs. higher-income families (<a href="https://www.commonsensemedia.org/press-releases/the-common-sense-census-presents-remote-learning-and-digital-equity-during-the-pandemic-2021" target="_blank" style="color:var(--accent);">Common Sense Media, 2021</a>)</div>
+</div>
+<div style="background:var(--accent3);border:1px solid var(--border);border-radius:6px;padding:16px 14px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1.1;">1 in 3</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:2px;">Children in Black, Latino, and Native American households lack home broadband access needed for online learning (<a href="https://www.census.gov/newsroom/press-releases/2024/computer-internet-use-2021.html" target="_blank" style="color:var(--accent);">US Census / Alliance for Excellent Education</a>)</div>
+</div>
+<div style="background:var(--accent3);border:1px solid var(--border);border-radius:6px;padding:16px 14px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1.1;">54% vs 87%</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:2px;">Low vs upper income Americans with broadband access (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</div>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+<img src="assets/pew-digital-divide.webp" style="width:75%;flex:1;border-radius:4px;object-fit:contain;min-height:0;display:block;margin:0 auto;">
 <div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</div>
 </div>
 </div>
 </div>
 </div>
-<!-- Slide 26: Social Part 2 -->
+<!-- Slide: Social 4. Education -->
 <div class="slide">
 <div class="window-bar">
 <span class="dot red"></span>
 <span class="dot yellow"></span>
 <span class="dot green"></span>
-<span class="window-title">consequence 04 — social: the invisible cost</span>
+<span class="window-title">consequence 04. education</span>
 </div>
 <div class="slide-content">
-<h3 class="slide-headline">Consequence 04 &mdash; Social: The Invisible Cost</h3>
-<div class="three-cards" style="flex:1;">
-<div class="info-card">
-<div class="info-card-num">01</div>
-<div class="info-card-title">Affordable Connectivity Program</div>
-<div class="info-card-body">Ended June 2024 &mdash; 81% of parents worried their children would fall behind without it. 23 million households lost subsidized internet access overnight. (<a href="https://www.fcc.gov/affordable-connectivity-program" target="_blank" style="color:var(--accent);">FCC</a>)</div>
+
+<div class="two-col" style="flex:1;align-items:stretch;">
+<div class="col-box" style="background:var(--accent3);border-left:4px solid var(--accent);display:flex;flex-direction:column;justify-content:center;gap:10px;">
+<p style="font-size:13px;line-height:1.7;color:var(--text);">A school district issues Chromebooks in 2019. By 2024, Google ends software support for that hardware generation. The devices still work physically but no longer receive security updates and are incompatible with new education platforms.</p>
+<p style="font-size:13px;line-height:1.7;color:var(--text);">The district must replace thousands of functioning devices. Low-income districts can't.</p>
+<div style="font-size:11px;color:var(--text3);">(<a href="https://support.google.com/chrome/a/answer/6220366" target="_blank" style="color:var(--accent);">Google</a>) &nbsp;&middot;&nbsp; (<a href="https://www.pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/" target="_blank" style="color:var(--accent);">Pew Research</a>)</div>
 </div>
-<div class="info-card">
-<div class="info-card-num">02</div>
-<div class="info-card-title">Manufactured Obsolescence</div>
-<div class="info-card-body">A device supported in 2020 may be unsupported today &mdash; not because it broke, but because the baseline moved.</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;">
+<div class="big-stat">
+<div class="big-stat-num">15&ndash;16M</div>
+<div class="big-stat-label">K-12 students who lack adequate broadband or devices for homework — disproportionately low-income and minority students (<a href="https://www.commonsensemedia.org/press-releases/the-common-sense-census-presents-remote-learning-and-digital-equity-during-the-pandemic-2021" target="_blank" style="color:var(--accent);">Common Sense Media</a>)</div>
 </div>
-<div class="info-card">
-<div class="info-card-num">03</div>
-<div class="info-card-title">Mobile Can&apos;t Replace Computing</div>
-<div class="info-card-body">Mobile alone can&apos;t handle homework, job applications, or standardized testing. A phone is not a computer &mdash; but for 1 in 3 low-income households, it&apos;s all there is. (<a href="https://www.pewresearch.org/internet/2024/01/31/for-lower-income-americans-mobile-phones-and-social-media-are-the-primary-pathway-to-digital-participation/" target="_blank" style="color:var(--accent);">Pew Research, 2024</a>)</div>
+<div class="big-stat">
+<div class="big-stat-num">6&ndash;8 yrs</div>
+<div class="big-stat-label">Typical Chromebook auto-update expiry from manufacture date. Regardless of device condition (<a href="https://support.google.com/chrome/a/answer/6220366" target="_blank" style="color:var(--accent);">Google</a>)</div>
+</div>
+
 </div>
 </div>
 </div>
@@ -1580,15 +1976,9 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot green"></span>
 </div>
 <div class="slide-content" style="gap:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 48px;">
-<div style="font-family:'DM Serif Display',serif;font-size:22px;line-height:1.5;color:#fdfaf4;max-width:680px;">&ldquo;Consumers permanently lost the ability to evaluate whether any of this was necessary.&rdquo;</div>
-<div style="font-family:'DM Serif Display',serif;font-size:22px;line-height:1.5;color:rgba(253,250,244,0.7);max-width:680px;">&ldquo;The industry controls what you think you need.&rdquo;</div>
-<div style="font-family:'DM Serif Display',serif;font-size:17px;line-height:1.55;color:rgba(253,250,244,0.5);max-width:640px;border-top:1px solid rgba(253,250,244,0.15);padding-top:18px;">&ldquo;When society gets used to a degraded environment as the baseline, further degradation will not be seen as something to be concerned about.&rdquo; &mdash; <a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:rgba(253,250,244,0.5);">Suzuki Foundation</a></div>
-<div style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.05em;color:var(--accent2);">And you don&apos;t know it.</div>
-<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:4px;">
-<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="font-size:11px;color:rgba(253,250,244,0.4);text-decoration:none;font-family:'Courier New',monospace;">davidsuzuki.org &nearr;</a>
-<a href="https://www.nber.org/system/files/working_papers/w24553/w24553.pdf" target="_blank" style="font-size:11px;color:rgba(253,250,244,0.4);text-decoration:none;font-family:'Courier New',monospace;">Flamm &mdash; NBER &nearr;</a>
-<a href="https://www.hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/" target="_blank" style="font-size:11px;color:rgba(253,250,244,0.4);text-decoration:none;font-family:'Courier New',monospace;">Morrow &mdash; HDT &nearr;</a>
-</div>
+<div style="font-family:'DM Serif Display',serif;font-size:21px;line-height:1.5;color:#fdfaf4;max-width:680px;">Beginning in the mid-1990s, coordinated industry roadmaps converted Moore&rsquo;s Law from an empirical observation into a self-fulfilling prophecy &mdash; the industry collectively decided the pace of change. (<a href="https://www.nber.org/system/files/working_papers/w24553/w24553.pdf" target="_blank" style="color:rgba(253,250,244,0.6);">Flamm, NBER 2018</a>)</div>
+<div style="font-family:'DM Serif Display',serif;font-size:21px;line-height:1.5;color:rgba(253,250,244,0.75);max-width:680px;">&ldquo;The industry controls what you think you need.&rdquo; (<a href="https://www.hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/" target="_blank" style="color:rgba(253,250,244,0.5);">Morrow</a>)</div>
+<div style="font-family:'DM Serif Display',serif;font-size:17px;line-height:1.55;color:rgba(253,250,244,0.5);max-width:640px;border-top:1px solid rgba(253,250,244,0.15);padding-top:18px;">&ldquo;When society gets used to a degraded environment as the baseline, further degradation will not be seen as something to be concerned about.&rdquo; (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:rgba(253,250,244,0.4);">Suzuki</a>)</div>
 </div>
 </div>
 <!-- Slide 28: Divider, Where Does This Leave Us -->
@@ -1612,23 +2002,15 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="window-title">reflecting on the argument</span>
 </div>
 <div class="slide-content" style="gap:14px;">
-<div style="display:flex;gap:20px;align-items:stretch;">
-<div class="col-box" style="background:var(--accent3);border-left:4px solid var(--accent);flex:1;">
+<div style="display:flex;gap:20px;flex:1;align-items:stretch;">
+<div class="col-box" style="background:var(--accent3);border-left:4px solid var(--accent);flex:1;display:flex;flex-direction:column;justify-content:center;">
 <div class="col-box-label">Original Argument</div>
 <p style="font-size:15px;line-height:1.7;color:var(--text);">What are the consequences of a computing industry that advances faster than the consumers it serves?</p>
 </div>
-<div class="col-box" style="background:var(--bg-bar);border-left:4px solid var(--text2);flex:1;">
+<div class="col-box" style="background:var(--bg-bar);border-left:4px solid var(--text2);flex:1;display:flex;flex-direction:column;justify-content:center;">
 <div class="col-box-label">Finding</div>
 <p style="font-size:14px;line-height:1.7;color:var(--text);">Consumers got genuine value <em>and</em> lost their ability to evaluate the industry simultaneously. The baseline shifted so far that the question of whether it was good or bad is almost impossible to answer from inside it.</p>
 </div>
-</div>
-<div style="flex:1;display:flex;flex-direction:column;gap:8px;justify-content:center;">
-<div style="font-size:11px;font-weight:700;letter-spacing:0.07em;color:var(--accent);text-transform:uppercase;">Add image here</div>
-<div style="background:var(--bg-bar);border:2px dashed var(--border);border-radius:4px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center;">
-<div style="font-size:12px;color:var(--text2);line-height:1.6;">Screenshot the transistors-per-microprocessor chart from Our World in Data &mdash; the exponential curve from 1971 to today showing the baseline rising continuously for 50 years. This visually proves the argument: the baseline kept rising every decade and nobody living inside it noticed.<br><br>URL: <a href="https://ourworldindata.org/grapher/transistors-per-microprocessor" target="_blank" style="color:var(--accent);">ourworldindata.org/grapher/transistors-per-microprocessor</a></div>
-<div style="font-size:10px;color:var(--text3);font-family:'Courier New',monospace;">Save as: images/transistors-owid.png</div>
-</div>
-<div style="font-size:11px;color:var(--text3);text-align:center;">(<a href="https://ourworldindata.org/grapher/transistors-per-microprocessor" target="_blank" style="color:var(--accent);">Our World in Data</a>)</div>
 </div>
 </div>
 </div>
@@ -1641,7 +2023,7 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="window-title">solutions</span>
 </div>
 <div class="slide-content">
-<h3 class="slide-headline">What would change the equation</h3>
+<h3 class="slide-headline">What would change the situation</h3>
 <div class="five-cards" style="flex:1;">
 <div class="sol-card">
 <div class="sol-num">01</div>
@@ -1651,17 +2033,17 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <div class="sol-card">
 <div class="sol-num">02</div>
 <div class="sol-title">Tech Literacy in Schools</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Teaching hardware history gives students the reference point that generational amnesia denies them. (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">Suzuki</a>)</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Teaching hardware history gives students the reference point that generational amnesia denies them. (<a href="https://davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/" target="_blank" style="color:var(--accent);">Suzuki Foundation</a>)</div>
 </div>
 <div class="sol-card">
 <div class="sol-num">03</div>
 <div class="sol-title">Right to Repair</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">FTC called manufacturer restrictions anticompetitive in 2021. Repair access disrupts the upgrade treadmill. (<a href="https://www.ftc.gov/reports/nixing-the-fix" target="_blank" style="color:var(--accent);">FTC &mdash; Nixing the Fix</a>)</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">FTC called manufacturer restrictions anticompetitive in 2021. Repair access disrupts the upgrade treadmill. (<a href="https://www.ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions" target="_blank" style="color:var(--accent);">FTC. Nixing the Fix</a>)</div>
 </div>
 <div class="sol-card">
 <div class="sol-num">04</div>
 <div class="sol-title">Software Transparency</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Require software to disclose actual vs. recommended specs. Make Wirth&apos;s Law visible so consumers can push back.</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Require software to disclose actual vs. recommended specs. Make Wirth&apos;s Law visible so consumers can push back. (<a href="https://en.wikipedia.org/wiki/Wirth%27s_law" target="_blank" style="color:var(--accent);">Wikipedia. Wirth's Law</a>)</div>
 </div>
 <div class="sol-card">
 <div class="sol-num">05</div>
@@ -1669,19 +2051,6 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <div style="font-size:11px;color:var(--text2);line-height:1.4;margin-top:6px;">Long-term funding for access programs. Ending the ACP cut off 23M households in June 2024. (<a href="https://www.fcc.gov/affordable-connectivity-program" target="_blank" style="color:var(--accent);">FCC</a>)</div>
 </div>
 </div>
-</div>
-</div>
-<!-- Slide 31: Conclusion -->
-<div class="slide divider">
-<div class="window-bar">
-<span class="dot red"></span>
-<span class="dot yellow"></span>
-<span class="dot green"></span>
-</div>
-<div class="slide-content" style="gap:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 48px;">
-<div style="font-family:'DM Serif Display',serif;font-size:20px;line-height:1.6;color:#fdfaf4;max-width:700px;">The computing industry advanced faster than consumers for fifty years.</div>
-<div style="font-family:'DM Serif Display',serif;font-size:20px;line-height:1.6;color:rgba(253,250,244,0.75);max-width:700px;">Each acceleration permanently reset what users consider normal — and erased their ability to question it.</div>
-<div style="font-family:'DM Serif Display',serif;font-size:20px;line-height:1.6;color:rgba(253,250,244,0.55);max-width:700px;">The most important consequence isn't the e-waste or the cost. It's that the industry now controls what you think you need.</div>
 </div>
 </div>
 <!-- Slide 32: Works Cited -->
@@ -1692,11 +2061,141 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
 <span class="dot green"></span>
 <span class="window-title">works cited</span>
 </div>
-<div class="slide-content" style="justify-content:flex-start;overflow-y:auto;">
-<div class="works-cited-list" id="works-cited">
-<p class="wc-placeholder">MLA citations to be added.</p>
+<div class="slide-content" style="justify-content:flex-start;padding-top:12px;padding-bottom:12px;overflow:hidden;">
+<div class="works-cited-list">
+<p class="wc-entry">"1984." <i>Computer History Museum</i>, computerhistory.org/timeline/1984/. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Affordable Connectivity Program." <i>Federal Communications Commission</i>, fcc.gov/affordable-connectivity-program. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Altair 8800." <i>emuStudio</i>, emustudio.net/documentation/user/altair8800/. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Apple Logo Black." <i>Wikimedia Commons</i>, Wikimedia Foundation, commons.wikimedia.org/wiki/File:Apple_logo_black.svg. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Apple MacBook Butterfly Keyboard Lawsuit Gets Class Action Certification." <i>MacRumors</i>, 22 Mar. 2021, macrumors.com/2021/03/22/apple-butterfly-keyboard-lawsuit-class-action/.</p>
+<p class="wc-entry">"Apple Agrees to Up to $500M Batterygate Settlement." <i>MacRumors</i>, 2 Mar. 2020, macrumors.com/2020/03/02/apple-agrees-to-up-to-500m-batterygate-settlement/.</p>
+<p class="wc-entry">"Apple Responds to Backlash: 'We Apologize.'" <i>Fortune</i>, 28 Dec. 2017, fortune.com/2017/12/28/apple-iphone-battery-apology.</p>
+<p class="wc-entry">"Apple Starts iPhone Batterygate Payouts." <i>MacRumors</i>, 6 Jan. 2024, macrumors.com/2024/01/06/apple-starts-iphone-batterygate-payouts/.</p>
+<p class="wc-entry">"Aug. 12, 1981 &mdash; Developed in Boca Raton, First PC Released by IBM." <i>Florida History Network</i>, floridahistorynetwork.com/aug-12-1981---developed-in-boca-raton-first-pc-released-by-ibm.html. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Defend Your Right to Repair." <i>Electronic Frontier Foundation</i>, eff.org/issues/right-to-repair. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Carbon Footprint of a Laptop." <i>Circular Computing</i>, circularcomputing.com/news/carbon-footprint-laptop/. Accessed 27 May 2026.</p>
 </div>
 </div>
+</div>
+<!-- Slide 33: Works Cited -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">works cited (cont.)</span>
+</div>
+<div class="slide-content" style="justify-content:flex-start;padding-top:12px;padding-bottom:12px;overflow:hidden;">
+<div class="works-cited-list">
+<p class="wc-entry">"Chrome Devices Auto-Update Policy." <i>Google Support</i>, Google, support.google.com/chrome/a/answer/6220366. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Computer History Timeline." <i>Computer History Museum</i>, computerhistory.org/timeline/computers/. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Computer Lifespan: Real Numbers 2026." <i>Sobrii</i>, sobrii.io/blog/computer-lifespan-real-numbers-2026. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Consumer Technology Association Forecast: U.S. Tech Industry Revenue to Rise 2.8% in 2024." <i>Consumer Technology Association</i>, 4 Jan. 2024, cta.tech/press-releases/consumer-technology-association-forecast-us-tech-industry-revenue-to-rise-28-in-2024.</p>
+<p class="wc-entry">"Cost of a Computer Every Year Since 1970." <i>247 Wall St.</i>, 16 Sept. 2021, 247wallst.com/special-report/2021/09/16/cost-of-a-computer-every-year-since-1970/.</p>
+<p class="wc-entry">"CPU Clock Speed History Graph." <i>MS Codes</i>, ms.codes/en-ca/blogs/computer-hardware/cpu-clock-speed-history-graph. Accessed 27 May 2026.</p>
+<p class="wc-entry">"CPU Clock Speed History Graph." <i>UMA Technology</i>, umatechnology.org/cpu-clock-speed-history-graph/. Accessed 27 May 2026.</p>
+
+<p class="wc-entry">"e-Trash Transparency Project." <i>Basel Action Network</i>, ban.org/trash-transparency. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Electronics Donation and Recycling." <i>United States Environmental Protection Agency</i>, epa.gov/smm-electronics. Accessed 27 May 2026.</p>
+</div>
+</div>
+</div>
+<!-- Slide 34: Works Cited -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">works cited (cont.)</span>
+</div>
+<div class="slide-content" style="justify-content:flex-start;padding-top:12px;padding-bottom:12px;overflow:hidden;">
+<div class="works-cited-list">
+<p class="wc-entry">Flamm, Kenneth. "Measuring Moore's Law: Evidence from Price, Cost, and Quality Indexes." <i>National Bureau of Economic Research</i>, Working Paper No. 24553, Apr. 2018, nber.org/system/files/working_papers/w24553/w24553.pdf.</p>
+<p class="wc-entry">"Former Advisor to Steve Jobs Says New Apple CEO Is Exactly What's Needed." <i>GeekWire</i>, 2026, geekwire.com/2026/former-advisor-to-steve-jobs-says-new-apple-ceo-is-exactly-whats-needed-an-engineer-from-the-inside/.</p>
+<p class="wc-entry">"Global E-Waste Monitor 2020." <i>United Nations Environment Programme</i>, 2020, ewastemonitor.info/gem-2020/.</p>
+<p class="wc-entry">"Google Logo." <i>Wikipedia</i>, Wikimedia Foundation, en.wikipedia.org/wiki/Google_logo. Accessed 27 May 2026.</p>
+<p class="wc-entry">"GPU Prices Aren't Actually That Expensive: Analyzing Market Trends and Value." <i>HDT Project</i>, hdt-project.org/gpu-prices-arent-actually-that-expensive-analyzing-market-trends-and-value/. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Historical Overview: CPU Clock Speed Advancements." <i>Hardware Hub</i>, hardwarehub.basalt.cc/blog/historical-overview-cpu-clock-speed-advancements-25. Accessed 27 May 2026.</p>
+<p class="wc-entry">"How Processor Speeds Have Increased Over the Decades." <i>PC Site</i>, Medium, pcsite.medium.com/how-processor-speeds-have-increased-over-the-decades-2f889c212525. Accessed 27 May 2026.</p>
+<p class="wc-entry">"IBM PC Keyboard." <i>National Museum of American History</i>, Smithsonian Institution, americanhistory.si.edu/collections/object/nmah_1323285. Accessed 27 May 2026.</p>
+<p class="wc-entry">"IBM Personal Computer 5150." <i>National Museum of American History</i>, Smithsonian Institution, americanhistory.si.edu/collections/object/nmah_1323282. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Computer and Internet Use in the United States: 2021." <i>United States Census Bureau</i>, 18 June 2024, census.gov/newsroom/press-releases/2024/computer-internet-use-2021.html.</p>
+</div>
+</div>
+</div>
+<!-- Slide 35: Works Cited -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">works cited (cont.)</span>
+</div>
+<div class="slide-content" style="justify-content:flex-start;padding-top:12px;padding-bottom:12px;overflow:hidden;">
+<div class="works-cited-list">
+<p class="wc-entry">"Long-Term Price Trends for Computers, TVs, and Related Items." <i>U.S. Bureau of Labor Statistics</i>, 26 Oct. 2015, bls.gov/opub/ted/2015/long-term-price-trends-for-computers-tvs-and-related-items.htm.</p>
+<p class="wc-entry">"Microsoft Logo." <i>Wikimedia Commons</i>, Wikimedia Foundation, commons.wikimedia.org/wiki/File:Microsoft_logo.svg. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Mobile Technology and Home Broadband 2021." <i>Pew Research Center</i>, pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Moore's Law and the Secret World of Processing Power." <i>UC Berkeley School of Information</i>, ischoolonline.berkeley.edu/blog/moores-law-processing-power/. Accessed 27 May 2026.</p>
+<p class="wc-entry">"New Rules for More Durable Products and Better Consumer Rights." <i>European Commission</i>, 30 Mar. 2021, ec.europa.eu/commission/presscorner/detail/en/ip_21_5642.</p>
+<p class="wc-entry">"Nixing the Fix: An FTC Report to Congress on Repair Restrictions." <i>Federal Trade Commission</i>, May 2021, ftc.gov/reports/nixing-fix-ftc-report-congress-repair-restrictions.</p>
+<p class="wc-entry">"Old Electronics Are Poisoning Communities In Ghana. The Solution May Be Regulation." <i>NPR</i>, 5 Oct. 2024, npr.org/sections/goats-and-soda/2024/10/05/g-s1-6411/electronics-public-health-waste-ghana-phones-computers.</p>
+<p class="wc-entry">Pauly, Daniel. "Anecdotes and the Shifting Baseline Syndrome of Fisheries." <i>Trends in Ecology &amp; Evolution</i>, vol. 10, no. 10, Oct. 1995, p. 430, doi.org/10.1016/S0169-5347(00)89171-5.</p>
+<p class="wc-entry">Perrin, Andrew, and Sara Atske. "Mobile Technology and Home Broadband 2021." <i>Pew Research Center</i>, 3 June 2021, pewresearch.org/internet/2021/06/03/mobile-technology-and-home-broadband-2021/.</p>
+<p class="wc-entry">Popescu, Marius. "I Visited Steve Jobs' Garage &mdash; Apple's First HQ." <i>MacOClock</i>, Medium, medium.com/macoclock/i-visited-steve-jobs-garage-apple-s-first-hq-apple-park-here-s-what-i-learned-0a2899fb509f. Accessed 27 May 2026.</p>
+</div>
+</div>
+</div>
+<!-- Slide 36: Works Cited -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">works cited (cont.)</span>
+</div>
+<div class="slide-content" style="justify-content:flex-start;padding-top:12px;padding-bottom:12px;overflow:hidden;">
+<div class="works-cited-list">
+<p class="wc-entry">"Processor History." <i>Computer Hope</i>, computerhope.com/history/processor.htm. Accessed 27 May 2026.</p>
+<p class="wc-entry">Roser, Max, et al. "Transistors per Microprocessor." <i>Our World in Data</i>, ourworldindata.org/grapher/transistors-per-microprocessor. Accessed 27 May 2026.</p>
+<p class="wc-entry">Sander, Alison. "How Long Does Apple Support iPhones?" <i>Macworld</i>, 2 Mar. 2023, macworld.com/article/675021/how-long-does-apple-support-iphones.html.</p>
+<p class="wc-entry">"Shifting Baseline Syndrome: Key to Growing Nature Disconnect." <i>David Suzuki Foundation</i>, davidsuzuki.org/expert-article/shifting-baseline-syndrome-key-to-growing-nature-disconnect/. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Small Business Index." <i>U.S. Chamber of Commerce</i>, uschamber.com/small-business/small-business-index-q1-2026. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Regulations for Electronics Stewardship." <i>United States Environmental Protection Agency</i>, epa.gov/electronics-batteries-management/regulations-electronics-stewardship. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Remote Learning and Digital Equity During the Pandemic." <i>Common Sense Media</i>, 2021, commonsensemedia.org/press-releases/the-common-sense-census-presents-remote-learning-and-digital-equity-during-the-pandemic-2021.</p>
+<p class="wc-entry">"The Homebrew Computer Club." <i>Bambi.net</i>, bambi.net/bob/homebrew.html. Accessed 27 May 2026.</p>
+<p class="wc-entry">Ung, Gordon Mah. "The PC Upgrade Cycle Slows to Every Five to Six Years, Intel's CEO Says." <i>PCWorld</i>, 7 Nov. 2013, pcworld.com/article/415068/the-pc-upgrade-cycle-slows-to-every-five-to-six-years-intels-ceo-says.html.</p>
+<p class="wc-entry">Bluff, Julia. "Planned Obsolescence: Your Stuff Really Is Breaking Faster." <i>iFixit</i>, ifixit.com/News/7098/planned-obsolescence.</p>
+</div>
+</div>
+</div>
+<!-- Slide 37: Works Cited -->
+<div class="slide">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="window-title">works cited (cont.)</span>
+</div>
+<div class="slide-content" style="justify-content:flex-start;padding-top:12px;padding-bottom:12px;overflow:hidden;">
+<div class="works-cited-list">
+<p class="wc-entry">"Windows 10 Support Has Ended." <i>Microsoft Support</i>, Microsoft, support.microsoft.com/en-us/windows/windows-10-support-has-ended-on-october-14-2025-2ca8b313-1946-43d3-b55c-2b95b107f281. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Windows 11 System Requirements." <i>Microsoft Support</i>, Microsoft, support.microsoft.com/en-us/windows/windows-11-system-requirements-86c11283-ea52-4782-9efd-7674389a7ba3. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Windows 1.0." <i>Wikipedia</i>, Wikimedia Foundation, en.wikipedia.org/wiki/Windows_1.0. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Wirth's Law." <i>DevIQ</i>, deviq.com/laws/wirths-law/. Accessed 27 May 2026.</p>
+<p class="wc-entry">"Wirth's Law." <i>Wikipedia</i>, Wikimedia Foundation, en.wikipedia.org/wiki/Wirth%27s_law. Accessed 27 May 2026.</p>
+</div>
+</div>
+</div>
+<!-- Any Questions? -->
+<div class="slide divider">
+<div class="window-bar">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+<div class="slide-content" style="justify-content:center;align-items:center;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:96px;letter-spacing:0.04em;color:#fdfaf4;line-height:1;">Any Questions?</div>
 </div>
 </div>
 <div class="nav">
@@ -1721,8 +2220,8 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
       document.getElementById('prog').style.width = ((cur + 1) / total * 100) + '%';
 
       if (cur === 5) setTimeout(renderTransistorChart, 50);
-      if (cur === 16) { const s = document.getElementById('yearSlider'); if (s) { s.value = '1971'; updateSlider(); } }
-      if (cur === 21) setTimeout(renderPriceChart, 50);
+      if (cur === 15) { const s = document.getElementById('yearSlider'); if (s) { s.value = '1971'; updateSlider(); const icon = document.getElementById('deviceIcon'); if (icon) icon.innerHTML = getDeviceIcon(1971); const note = document.getElementById('baselineNote'); if (note) note.textContent = getBaselineNote(1971); } }
+      if (cur === 23) setTimeout(renderPriceChart, 50);
 
       if (prevIndex === 6 && cur !== 6) {
         resetTransform();
@@ -1996,10 +2495,10 @@ Long-run price trends: (<a href="https://www.bls.gov/opub/ted/2015/long-term-pri
       svg.appendChild(yAxisLabel);
     }
 
-    window.addEventListener('load', renderTransistorChart);
+    window.addEventListener('load', () => setTimeout(renderTransistorChart, 100));
     window.addEventListener('resize', () => {
       renderTransistorChart();
-      if (cur === 21) renderPriceChart();
+      if (cur === 23) renderPriceChart();
     });
 
     // baseline slider (Slide 17, index 16)
